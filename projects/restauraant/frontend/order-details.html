@@ -1,0 +1,265 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Order Details & Live Tracking | ROYAL FLAME Luxury Dining</title>
+  <meta name="description" content="Track your culinary order in real-time. View live preparation stage, delivery details, and itemized invoice receipt.">
+
+  <!-- CSS Stylesheets -->
+  <link rel="stylesheet" href="css/style.css">
+  <link rel="stylesheet" href="css/home.css">
+  <link rel="stylesheet" href="css/cart.css">
+  <link rel="stylesheet" href="css/orders.css">
+</head>
+<body>
+
+  <!-- Toast Notification Container -->
+  <div id="toast-container"></div>
+
+  <!-- ========================================================================
+       1. STICKY LUXURY NAVIGATION BAR
+       ======================================================================== -->
+  <header class="navbar-sticky">
+    <div class="nav-container">
+      
+      <!-- Left: Logo & Brand -->
+      <a href="home.html" class="nav-brand">
+        <div class="brand-crest">⚜️</div>
+        <div class="brand-info">
+          <span class="brand-title"><span class="gold-text">ROYAL FLAME</span></span>
+          <span class="brand-tag">Fine Dining &bull; <span style="color: var(--gold-300);">Live Order Tracking</span></span>
+        </div>
+      </a>
+
+      <!-- Center: Search Link -->
+      <div class="nav-search-wrapper">
+        <div class="nav-search-box" onclick="window.location.href='menu.html'" style="cursor: pointer;">
+          <span class="search-icon">🔍</span>
+          <input 
+            type="text" 
+            class="nav-search-input" 
+            placeholder="Search menu book..." 
+            readonly 
+            style="cursor: pointer;"
+          >
+        </div>
+      </div>
+
+      <!-- Right: Action Icons & Profile -->
+      <div class="nav-actions">
+        <!-- Back to Orders -->
+        <a href="orders.html" class="nav-action-item" title="My Orders">
+          <div class="action-icon-wrap"><span>📦</span></div>
+          <span>My Orders</span>
+        </a>
+
+        <!-- Cart -->
+        <a href="cart.html" class="nav-action-item" title="Dining Cart">
+          <div class="action-icon-wrap">
+            <span>🛒</span>
+            <span class="nav-badge" id="cart-count-badge">0</span>
+          </div>
+          <span>Cart</span>
+        </a>
+
+        <!-- Notifications Dropdown (Requirement 10) -->
+        <div class="notifications-dropdown-wrap">
+          <button type="button" class="nav-action-item" id="notification-trigger" title="Royal Notifications">
+            <div class="action-icon-wrap">
+              <span>🔔</span>
+              <span class="nav-badge" id="notification-badge" style="display: none;">0</span>
+            </div>
+            <span>Alerts</span>
+          </button>
+
+          <div class="notifications-menu" id="notifications-menu">
+            <div class="notifications-header">
+              <span class="notifications-title">👑 Kitchen & Order Alerts</span>
+              <button type="button" class="notifications-mark-read" id="mark-all-read-btn">Mark all read</button>
+            </div>
+            <div class="notifications-list" id="notifications-list">
+              <div class="notifications-empty">Loading royal notifications...</div>
+            </div>
+          </div>
+        </div>
+
+        <!-- User Profile Dropdown -->
+        <div class="profile-dropdown-wrap">
+          <div class="profile-trigger" id="profile-trigger" title="User Account Settings">
+            <div class="profile-avatar" id="user-avatar-letter">U</div>
+            <span class="profile-username" id="navbar-username">Guest</span>
+            <span style="font-size: 0.7rem; color: var(--gold-400);">▼</span>
+          </div>
+
+          <div class="profile-menu" id="profile-menu">
+            <div class="menu-user-meta">
+              <div class="menu-user-name" id="menu-user-name">Royal Guest</div>
+              <div class="menu-user-email" id="menu-user-email">guest@royalflame.com</div>
+              <span class="menu-user-role" id="menu-user-role">CUSTOMER</span>
+            </div>
+            <a href="orders.html" class="profile-menu-item"><span>📦</span> My Orders</a>
+            <a href="cart.html" class="profile-menu-item"><span>🛒</span> Dining Cart</a>
+            <a href="wishlist.html" class="profile-menu-item"><span>❤️</span> My Wishlist</a>
+            <div class="profile-menu-item logout-btn" id="logout-btn"><span>🚪</span> Sign Out</div>
+          </div>
+        </div>
+
+      </div>
+
+    </div>
+  </header>
+
+  <!-- ========================================================================
+       2. BREADCRUMBS
+       ======================================================================== -->
+  <div style="max-width: 1100px; margin: 1.5rem auto 0; padding: 0 1.5rem;">
+    <a href="orders.html" style="color: var(--gold-300); font-size: 0.88rem; display: inline-flex; align-items: center; gap: 6px;">
+      ◀ Back to All Orders
+    </a>
+  </div>
+
+  <!-- ========================================================================
+       3. ORDER DETAILS & TIMELINE (Requirement 9)
+       ======================================================================== -->
+  <main class="order-details-section">
+    
+    <div class="order-tracker-card">
+      
+      <!-- Card Header -->
+      <div style="display: flex; justify-content: space-between; align-items: flex-start; border-bottom: 1px solid rgba(255,255,255,0.08); padding-bottom: 1.5rem; flex-wrap: wrap; gap: 1rem;">
+        <div>
+          <span style="font-size: 0.8rem; text-transform: uppercase; color: var(--gold-400); letter-spacing: 0.1em; font-weight: 700;">Live Kitchen Dispatch</span>
+          <h1 style="font-family: var(--font-serif); font-size: 1.8rem; color: #fff; margin-top: 2px;" id="details-order-id">
+            #RF-2026-XXXXX
+          </h1>
+          <div style="font-size: 0.85rem; color: var(--text-muted); margin-top: 4px;">
+            Placed on: <span id="details-order-date" style="color: var(--text-secondary);">Loading date...</span>
+          </div>
+        </div>
+
+        <div style="text-align: right;">
+          <span class="order-status-pill confirmed" id="details-status-badge">● Confirmed</span>
+          <div style="font-size: 0.85rem; color: var(--gold-300); margin-top: 6px;">
+            Estimated Delivery: <strong id="details-est-delivery">30-40 mins</strong>
+          </div>
+        </div>
+      </div>
+
+      <!-- VISUAL STATUS TIMELINE (Requirement 9) -->
+      <div class="status-timeline-container">
+        <div class="timeline-track">
+          <div class="timeline-progress-fill" id="timeline-progress-fill" style="width: 20%;"></div>
+          <div style="display: flex; justify-content: space-between; width: 100%;" id="status-timeline-track">
+            <!-- Dynamically populated via orders.js -->
+          </div>
+        </div>
+      </div>
+
+      <!-- Interactive Stage Advancer (For Demo & Live Testing) -->
+      <div class="status-advance-control">
+        <div style="font-size: 0.85rem; color: var(--text-secondary);">
+          👑 <strong>Chef's Table Simulator:</strong> Test real-time status transitions and patron notification broadcasts.
+        </div>
+        <button type="button" class="btn btn-primary" id="advance-status-btn" style="padding: 6px 16px; font-size: 0.82rem;">
+          ⚡ Advance Kitchen Stage
+        </button>
+      </div>
+
+      <!-- 2-COLUMN BREAKDOWN: Itemized List & Summary -->
+      <div class="order-info-columns">
+        
+        <!-- Left: Ordered Dishes -->
+        <div class="details-box">
+          <h3 class="details-box-title">🍽️ Ordered Delicacies</h3>
+          <div id="details-items-list">
+            <!-- Dynamically populated via orders.js -->
+          </div>
+        </div>
+
+        <!-- Right: Address & Price Breakdown -->
+        <div style="display: flex; flex-direction: column; gap: 1.5rem;">
+          
+          <!-- Delivery Destination -->
+          <div class="details-box">
+            <h3 class="details-box-title">📍 Delivery Destination</h3>
+            <div id="details-address-card">
+              Loading delivery address...
+            </div>
+          </div>
+
+          <!-- Payment Summary -->
+          <div class="details-box">
+            <h3 class="details-box-title">💳 Payment Details</h3>
+            <div id="details-payment-card">
+              Loading payment information...
+            </div>
+          </div>
+
+          <!-- Price Receipt Summary -->
+          <div class="details-box">
+            <h3 class="details-box-title">🧾 Final Bill Breakdown</h3>
+            <div class="summary-line-item">
+              <span>Subtotal:</span>
+              <span id="details-subtotal">₹0</span>
+            </div>
+            <div class="summary-line-item">
+              <span>Delivery Fee:</span>
+              <span id="details-delivery">₹40</span>
+            </div>
+            <div class="summary-line-item">
+              <span>GST (5%):</span>
+              <span id="details-tax">₹0</span>
+            </div>
+            <div class="summary-line-item discount">
+              <span>Royalty Discount:</span>
+              <span id="details-discount">-₹0</span>
+            </div>
+            <div class="summary-total-item" style="margin-bottom: 0; padding-top: 0.8rem;">
+              <span>Total Paid:</span>
+              <span class="summary-grand-total" id="details-grand-total">₹0</span>
+            </div>
+          </div>
+
+        </div>
+
+      </div>
+
+    </div>
+
+  </main>
+
+  <!-- ========================================================================
+       4. LUXURY FOOTER
+       ======================================================================== -->
+  <footer class="footer">
+    <div class="footer-grid">
+      <div>
+        <div style="display: flex; align-items: center; gap: 10px; margin-bottom: 12px;">
+          <span style="font-size: 1.8rem; color: var(--gold-300);">⚜️</span>
+          <h3 class="footer-brand-title"><span class="gold-text">ROYAL FLAME</span></h3>
+        </div>
+        <p class="footer-desc">
+          An opulent epicurean sanctuary celebrating royal feasts and modern culinary mastery.
+        </p>
+      </div>
+
+      <div>
+        <h4 class="footer-col-title">Navigation</h4>
+        <ul class="footer-links">
+          <li><a href="home.html" class="footer-link">Home</a></li>
+          <li><a href="menu.html" class="footer-link">Menu Book</a></li>
+          <li><a href="orders.html" class="footer-link">My Orders</a></li>
+        </ul>
+      </div>
+    </div>
+
+    <div class="footer-bottom">
+      <div>&copy; 2026 Royal Flame Luxury Restaurant & Gourmet Group. All Rights Reserved.</div>
+    </div>
+  </footer>
+
+  <!-- JavaScript -->
+  <script src="js/orders.js"></script>
+</body>
+</html>

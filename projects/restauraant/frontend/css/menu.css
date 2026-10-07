@@ -1,0 +1,329 @@
+/* ==========================================================================
+   ROYAL FLAME - MENU BOOK STYLES (menu.css)
+   ========================================================================== */
+
+/* --------------------------------------------------------------------------
+   1. MENU PAGE HERO / BANNER
+   -------------------------------------------------------------------------- */
+.menu-hero {
+  position: relative;
+  padding: 3.5rem 1.5rem 2rem;
+  background: radial-gradient(circle at 50% 20%, rgba(212, 175, 55, 0.12) 0%, rgba(10, 10, 13, 0.95) 75%);
+  text-align: center;
+  border-bottom: 1px solid var(--border-gold);
+}
+
+.menu-hero-badge {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  background: rgba(212, 175, 55, 0.12);
+  border: 1px solid var(--border-gold);
+  color: var(--gold-300);
+  font-size: 0.8rem;
+  font-weight: 700;
+  letter-spacing: 0.15em;
+  text-transform: uppercase;
+  padding: 6px 18px;
+  border-radius: var(--radius-full);
+  margin-bottom: 1rem;
+}
+
+.menu-hero-title {
+  font-family: var(--font-serif);
+  font-size: 2.8rem;
+  font-weight: 900;
+  letter-spacing: 0.08em;
+  margin-bottom: 0.6rem;
+  line-height: 1.2;
+}
+
+.menu-hero-subtitle {
+  font-family: var(--font-display);
+  font-style: italic;
+  font-size: 1.1rem;
+  color: var(--text-secondary);
+  max-width: 650px;
+  margin: 0 auto 1.5rem;
+}
+
+/* --------------------------------------------------------------------------
+   2. CATEGORY SELECTOR CAROUSEL
+   -------------------------------------------------------------------------- */
+.menu-category-nav {
+  position: sticky;
+  top: 70px;
+  z-index: 90;
+  background: rgba(14, 14, 19, 0.95);
+  backdrop-filter: blur(16px);
+  -webkit-backdrop-filter: blur(16px);
+  border-bottom: 1px solid var(--border-gold);
+  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.6);
+  padding: 0.85rem 0;
+}
+
+.menu-category-container {
+  max-width: 1440px;
+  margin: 0 auto;
+  padding: 0 1.5rem;
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  overflow-x: auto;
+  scrollbar-width: thin;
+  scrollbar-color: var(--gold-400) transparent;
+}
+
+.menu-category-container::-webkit-scrollbar {
+  height: 4px;
+}
+.menu-category-container::-webkit-scrollbar-thumb {
+  background: var(--gold-400);
+  border-radius: 4px;
+}
+
+.menu-cat-btn {
+  flex-shrink: 0;
+  background: rgba(24, 24, 34, 0.85);
+  border: 1px solid var(--border-gold);
+  color: var(--text-secondary);
+  font-size: 0.86rem;
+  font-weight: 600;
+  padding: 8px 18px;
+  border-radius: var(--radius-full);
+  cursor: pointer;
+  transition: all var(--transition-fast);
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  user-select: none;
+}
+
+.menu-cat-btn:hover {
+  background: rgba(212, 175, 55, 0.18);
+  border-color: var(--gold-300);
+  color: #fff;
+  transform: translateY(-2px);
+}
+
+.menu-cat-btn.active {
+  background: var(--gold-gradient);
+  color: #0b0b0f;
+  border-color: transparent;
+  font-weight: 800;
+  box-shadow: 0 4px 16px rgba(212, 175, 55, 0.45);
+}
+
+/* --------------------------------------------------------------------------
+   3. FILTER & TOOLBAR SECTION
+   -------------------------------------------------------------------------- */
+.menu-toolbar-wrapper {
+  max-width: 1440px;
+  margin: 1.5rem auto 1.2rem;
+  padding: 0 1.5rem;
+}
+
+.menu-toolbar {
+  background: rgba(20, 20, 28, 0.85);
+  border: 1px solid var(--border-gold);
+  border-radius: var(--radius-md);
+  padding: 1rem 1.4rem;
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: space-between;
+  gap: 1.2rem;
+  box-shadow: var(--shadow-card);
+}
+
+.menu-search-box {
+  flex: 1;
+  min-width: 260px;
+  max-width: 440px;
+  position: relative;
+  display: flex;
+  align-items: center;
+  background: rgba(12, 12, 16, 0.85);
+  border: 1px solid var(--border-gold);
+  border-radius: var(--radius-full);
+  padding: 6px 14px;
+}
+
+.menu-search-box:focus-within {
+  border-color: var(--gold-300);
+  box-shadow: var(--shadow-gold-sm);
+}
+
+.menu-search-input {
+  flex: 1;
+  background: transparent;
+  border: none;
+  outline: none;
+  color: #fff;
+  font-size: 0.88rem;
+  padding-left: 8px;
+}
+
+.menu-search-input::placeholder {
+  color: var(--text-muted);
+}
+
+.menu-filter-group {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  flex-wrap: wrap;
+}
+
+.menu-diet-toggle {
+  display: flex;
+  background: rgba(12, 12, 16, 0.85);
+  border: 1px solid var(--border-gold);
+  border-radius: var(--radius-full);
+  padding: 3px;
+}
+
+.diet-toggle-btn {
+  background: transparent;
+  border: none;
+  color: var(--text-secondary);
+  font-size: 0.8rem;
+  font-weight: 600;
+  padding: 6px 14px;
+  border-radius: var(--radius-full);
+  cursor: pointer;
+  transition: all var(--transition-fast);
+  display: flex;
+  align-items: center;
+  gap: 6px;
+}
+
+.diet-toggle-btn.active {
+  background: rgba(212, 175, 55, 0.25);
+  color: var(--gold-200);
+  font-weight: 700;
+}
+
+.diet-toggle-btn.active.veg {
+  background: rgba(16, 185, 129, 0.25);
+  color: #6ee7b7;
+}
+
+.diet-toggle-btn.active.non-veg {
+  background: rgba(239, 68, 68, 0.25);
+  color: #fca5a5;
+}
+
+.menu-sort-select {
+  background: rgba(12, 12, 16, 0.9);
+  border: 1px solid var(--border-gold);
+  color: var(--text-primary);
+  font-size: 0.84rem;
+  padding: 8px 14px;
+  border-radius: var(--radius-sm);
+  cursor: pointer;
+}
+
+.menu-sort-select:focus {
+  border-color: var(--gold-300);
+}
+
+.menu-count-badge {
+  font-size: 0.85rem;
+  color: var(--gold-300);
+  font-weight: 600;
+}
+
+/* --------------------------------------------------------------------------
+   4. DISHES GRID & CARDS
+   -------------------------------------------------------------------------- */
+.menu-grid-section {
+  max-width: 1440px;
+  margin: 0 auto 4rem;
+  padding: 0 1.5rem;
+}
+
+.menu-dishes-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(295px, 1fr));
+  gap: 2rem;
+}
+
+/* Dish Card specific tweaks */
+.dish-card-clickable {
+  cursor: pointer;
+}
+
+.dish-card-clickable:hover .dish-name {
+  color: var(--gold-300);
+}
+
+/* Card Availability Badge */
+.dish-availability-badge {
+  display: inline-flex;
+  align-items: center;
+  gap: 4px;
+  font-size: 0.72rem;
+  font-weight: 600;
+  color: #10b981;
+}
+
+.dish-availability-badge.unavailable {
+  color: #ef4444;
+}
+
+.dish-availability-dot {
+  width: 6px;
+  height: 6px;
+  border-radius: 50%;
+  background: #10b981;
+}
+
+/* --------------------------------------------------------------------------
+   5. EMPTY & LOADING STATES
+   -------------------------------------------------------------------------- */
+.menu-empty-state {
+  grid-column: 1 / -1;
+  text-align: center;
+  padding: 4rem 1.5rem;
+  background: rgba(18, 18, 24, 0.6);
+  border: 1px dashed var(--border-gold);
+  border-radius: var(--radius-lg);
+}
+
+.menu-empty-icon {
+  font-size: 3.5rem;
+  margin-bottom: 1rem;
+  display: block;
+}
+
+.menu-empty-title {
+  font-family: var(--font-serif);
+  font-size: 1.5rem;
+  color: var(--gold-300);
+  margin-bottom: 0.5rem;
+}
+
+.menu-empty-desc {
+  color: var(--text-muted);
+  font-size: 0.95rem;
+  max-width: 450px;
+  margin: 0 auto 1.5rem;
+}
+
+/* Responsive adjustments */
+@media (max-width: 768px) {
+  .menu-hero-title {
+    font-size: 2rem;
+  }
+  .menu-toolbar {
+    flex-direction: column;
+    align-items: stretch;
+  }
+  .menu-search-box {
+    max-width: 100%;
+  }
+  .menu-filter-group {
+    justify-content: space-between;
+  }
+}

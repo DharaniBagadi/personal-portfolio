@@ -1,0 +1,182 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Banquets & Order Management | Royal Flame Executive Admin</title>
+  <meta name="description" content="Manage customer dining orders, update live preparation status, and dispatch delivery notifications.">
+  
+  <!-- Fonts & Icons -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;600;700;800&family=Outfit:wght@300;400;500;600;700&family=Playfair+Display:ital,wght@0,600;0,700;1,400&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+  
+  <!-- Stylesheets -->
+  <link rel="stylesheet" href="/css/style.css">
+  <link rel="stylesheet" href="/css/admin.css">
+</head>
+<body class="admin-body">
+
+  <!-- Sidebar -->
+  <aside class="admin-sidebar" id="adminSidebar">
+    <div class="admin-brand">
+      <div class="brand-crest">⚜️</div>
+      <div class="brand-text">
+        <h2>Royal Flame</h2>
+        <span>Executive Suite</span>
+      </div>
+    </div>
+
+    <nav class="admin-nav">
+      <a href="/admin/dashboard.html" class="admin-nav-item">
+        <i class="fas fa-chart-line"></i>
+        <span>Dashboard</span>
+      </a>
+      <a href="/admin/dishes.html" class="admin-nav-item">
+        <i class="fas fa-utensils"></i>
+        <span>Food Management</span>
+      </a>
+      <a href="/admin/categories.html" class="admin-nav-item">
+        <i class="fas fa-layer-group"></i>
+        <span>Categories</span>
+      </a>
+      <a href="/admin/orders.html" class="admin-nav-item active">
+        <i class="fas fa-receipt"></i>
+        <span>Orders</span>
+      </a>
+      <a href="/admin/users.html" class="admin-nav-item">
+        <i class="fas fa-users"></i>
+        <span>User Records</span>
+      </a>
+      <a href="/admin/reviews.html" class="admin-nav-item">
+        <i class="fas fa-star"></i>
+        <span>Guest Reviews</span>
+      </a>
+      <a href="/admin/analytics.html" class="admin-nav-item">
+        <i class="fas fa-chart-pie"></i>
+        <span>Deep Analytics</span>
+      </a>
+      <a href="/home.html" class="admin-nav-item" target="_blank">
+        <i class="fas fa-external-link-alt"></i>
+        <span>Live Restaurant</span>
+      </a>
+    </nav>
+
+    <div class="admin-sidebar-footer">
+      <div class="admin-user-pill">
+        <div class="admin-avatar">AD</div>
+        <div class="admin-user-info">
+          <div class="admin-name">Chef Vikramaditya</div>
+          <div class="admin-role">Super Admin</div>
+        </div>
+      </div>
+      <button class="logout-btn-mini" onclick="handleAdminLogout()" title="Exit Portal">
+        <i class="fas fa-sign-out-alt"></i>
+      </button>
+    </div>
+  </aside>
+
+  <!-- Main Content -->
+  <main class="admin-main">
+    <!-- Header -->
+    <header class="admin-header">
+      <div class="header-left">
+        <button class="menu-toggle-btn" onclick="toggleAdminSidebar()">
+          <i class="fas fa-bars"></i>
+        </button>
+        <div class="page-title">
+          <h1>⚜️ Banquets & Orders Dispatch</h1>
+          <p>Supervise dining orders, change live kitchen status, and notify patrons</p>
+        </div>
+      </div>
+
+      <div class="header-right">
+        <button class="btn-admin-outline" onclick="loadAllOrders()">
+          <i class="fas fa-sync-alt"></i> Refresh Orders
+        </button>
+      </div>
+    </header>
+
+    <!-- Container -->
+    <div class="admin-container">
+      
+      <!-- Toolbar -->
+      <section class="admin-toolbar">
+        <div class="toolbar-left">
+          <div class="admin-search-box">
+            <i class="fas fa-search"></i>
+            <input type="text" id="orderSearchInput" placeholder="Search by Order ID, name, phone...">
+          </div>
+          <select class="admin-select" id="orderStatusFilter">
+            <option value="all">All Statuses</option>
+            <option value="Pending">Pending</option>
+            <option value="Confirmed">Confirmed</option>
+            <option value="Preparing">Preparing</option>
+            <option value="Ready">Ready</option>
+            <option value="Out for Delivery">Out for Delivery</option>
+            <option value="Delivered">Delivered</option>
+            <option value="Cancelled">Cancelled</option>
+          </select>
+        </div>
+
+        <div class="toolbar-right">
+          <span style="font-size:0.85rem; color:var(--admin-gold);"><i class="fas fa-bell"></i> Patron status updates trigger instant notifications</span>
+        </div>
+      </section>
+
+      <!-- Orders Table Card -->
+      <section class="table-card">
+        <div class="table-responsive">
+          <table class="admin-table">
+            <thead>
+              <tr>
+                <th>Order ID</th>
+                <th>Patron Details</th>
+                <th>Dishes</th>
+                <th>Grand Total</th>
+                <th>Payment Method</th>
+                <th>Payment</th>
+                <th>Change Status</th>
+                <th>Placed At</th>
+                <th>Inspect</th>
+              </tr>
+            </thead>
+            <tbody id="ordersTableBody">
+              <tr>
+                <td colspan="9" style="text-align:center; padding: 40px; color: var(--admin-text-muted);">
+                  <i class="fas fa-spinner fa-spin"></i> Retrieving Royal Banquets & Orders...
+                </td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+      </section>
+
+    </div>
+  </main>
+
+  <!-- Order Details Modal -->
+  <div class="admin-modal-backdrop" id="orderDetailsModalBackdrop">
+    <div class="admin-modal">
+      <div class="modal-header">
+        <h3 id="modalOrderIdTitle">✨ Order Details</h3>
+        <button class="modal-close-btn" onclick="closeOrderDetailsModal()">&times;</button>
+      </div>
+      <div class="modal-body" id="modalOrderContent">
+        <!-- Injected via JavaScript -->
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn-admin-gold" onclick="closeOrderDetailsModal()">Close Details</button>
+      </div>
+    </div>
+  </div>
+
+  <script src="/js/admin.js"></script>
+  <script>
+    document.addEventListener('DOMContentLoaded', () => {
+      initAdminOrders();
+    });
+  </script>
+</body>
+</html>

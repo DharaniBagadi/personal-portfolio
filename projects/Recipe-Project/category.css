@@ -1,0 +1,140 @@
+*{
+    padding: 0px;
+    margin: 0px;
+}
+body {
+  
+  font-family: Arial, sans-serif;
+  background: #f5d1ca;
+}
+/* .navbar {
+  display: flex;
+  justify-content: space-between;
+  padding: 20px 40px;
+}
+
+.nav-left span {
+  margin-right: 20px;
+  display:flex;
+  justify-content: space-between;
+ 
+
+}
+#abt{
+    text-decoration: none;
+    color:black;
+    padding-right: 20px;
+    
+}
+#category{
+    text-decoration: none;
+    color:black;
+    padding-left:20px;
+    
+} */
+ .navbar {
+  display: flex;
+  justify-content: space-between;
+  padding: 20px 40px;
+}
+
+/* Left links */
+.nav-left {
+  display: flex;
+  gap: 20px;
+}
+
+#abt, #category {
+  text-decoration: none;
+  color: black;
+  font-size: 18px;
+}
+
+/* Right icon */
+.nav-right i {
+  font-size: 28px;
+  color: black;
+}
+
+
+.container{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    height: 80vh;
+    margin-left: 40px;
+    margin-right: 40px;
+}
+
+.meal {
+  text-align: center;
+}
+
+.meal h2 {
+  font-size: 28px;
+  margin-bottom: 20px;
+  color: #b56576
+}
+
+.card {
+  width: 250px;
+  height: 250px;
+  background-color:#fcdfda; 
+  background-size: cover;
+  border-radius: 40px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  box-shadow: 0 10px 25px rgba(0,0,0,0.2);
+  cursor: pointer;
+  transition: all 0.3sec ease;
+ 
+}
+
+.card:hover {
+  transform: translateY(-8px);
+   box-shadow: 0 10px 25px rgba(255, 105, 135, 0.4);
+}
+
+.image {
+  width: 100%;
+  height: auto;
+  border-radius: 15px;
+  object-fit: cover;
+  box-shadow: 0 4px 10px rgba(0,0,0,0.1);
+}
+#icon{
+  font-size: 3rem;
+  margin-left: 10px;
+}
+#icon2{
+  font-size: 3rem;
+  margin-right: 10px;
+}
+#rec {
+  font-size:50px;
+  text-align: center;
+  margin-bottom: 30px;
+  color: #2d2d2d;
+}
+
+.meal-link {
+  text-decoration: none;   
+  color: #b56576;          
+  font-size: 28px;         
+}
+
+.meal-link:hover {
+  color: #50d0f3;         
+}
+#qute{
+    text-align: center;
+    color: rgb(46, 44, 44);
+    padding-top: 20px;
+    font-size: 30px;
+}
+#title{
+    font-size: 60px;
+    text-align: center;
+   padding-top:30px;
+}

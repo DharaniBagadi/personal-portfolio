@@ -1,0 +1,286 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Dining Cart | ROYAL FLAME Luxury Dining</title>
+  <meta name="description" content="Review your selected fine dining delicacies, customize portions, apply royalty vouchers, and proceed to royal checkout.">
+
+  <!-- CSS Stylesheets -->
+  <link rel="stylesheet" href="css/style.css">
+  <link rel="stylesheet" href="css/home.css">
+  <link rel="stylesheet" href="css/cart.css">
+</head>
+<body>
+
+  <!-- Toast Notification Container -->
+  <div id="toast-container"></div>
+
+  <!-- ========================================================================
+       1. STICKY LUXURY NAVIGATION BAR
+       ======================================================================== -->
+  <header class="navbar-sticky">
+    <div class="nav-container">
+      
+      <!-- Left: Logo & Brand -->
+      <a href="home.html" class="nav-brand">
+        <div class="brand-crest">⚜️</div>
+        <div class="brand-info">
+          <span class="brand-title"><span class="gold-text">ROYAL FLAME</span></span>
+          <span class="brand-tag">Fine Dining &bull; <span style="color: var(--gold-300);">Dining Cart</span></span>
+        </div>
+      </a>
+
+      <!-- Center: Search Link -->
+      <div class="nav-search-wrapper">
+        <div class="nav-search-box" onclick="window.location.href='menu.html'" style="cursor: pointer;">
+          <span class="search-icon">🔍</span>
+          <input 
+            type="text" 
+            class="nav-search-input" 
+            placeholder="Search menu book for signature dishes..." 
+            readonly 
+            style="cursor: pointer;"
+          >
+        </div>
+      </div>
+
+      <!-- Right: Action Icons & Profile -->
+      <div class="nav-actions">
+        
+        <!-- Menu Book -->
+        <a href="menu.html" class="nav-action-item" title="Explore Menu Book">
+          <div class="action-icon-wrap">
+            <span>📖</span>
+          </div>
+          <span>Menu Book</span>
+        </a>
+
+        <!-- Wishlist -->
+        <a href="wishlist.html" class="nav-action-item" title="View Wishlist">
+          <div class="action-icon-wrap">
+            <span>❤️</span>
+          </div>
+          <span>Wishlist</span>
+        </a>
+
+        <!-- Cart (Active) -->
+        <a href="cart.html" class="nav-action-item" title="Dining Cart" style="color: var(--gold-300);">
+          <div class="action-icon-wrap">
+            <span>🛒</span>
+            <span class="nav-badge" id="cart-count-badge">0</span>
+          </div>
+          <span style="font-weight: 700;">Cart</span>
+        </a>
+
+        <!-- Notifications Dropdown (Requirement 10) -->
+        <div class="notifications-dropdown-wrap">
+          <button type="button" class="nav-action-item" id="notification-trigger" title="Royal Notifications">
+            <div class="action-icon-wrap">
+              <span>🔔</span>
+              <span class="nav-badge" id="notification-badge" style="display: none;">0</span>
+            </div>
+            <span>Alerts</span>
+          </button>
+
+          <div class="notifications-menu" id="notifications-menu">
+            <div class="notifications-header">
+              <span class="notifications-title">👑 Kitchen & Order Alerts</span>
+              <button type="button" class="notifications-mark-read" id="mark-all-read-btn">Mark all read</button>
+            </div>
+            <div class="notifications-list" id="notifications-list">
+              <div class="notifications-empty">Loading royal notifications...</div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Orders -->
+        <a href="orders.html" class="nav-action-item" title="My Orders">
+          <div class="action-icon-wrap">
+            <span>📦</span>
+          </div>
+          <span>Orders</span>
+        </a>
+
+        <!-- User Profile Dropdown -->
+        <div class="profile-dropdown-wrap">
+          <div class="profile-trigger" id="profile-trigger" title="User Account Settings">
+            <div class="profile-avatar" id="user-avatar-letter">U</div>
+            <span class="profile-username" id="navbar-username">Guest</span>
+            <span style="font-size: 0.7rem; color: var(--gold-400);">▼</span>
+          </div>
+
+          <!-- Dropdown Menu -->
+          <div class="profile-menu" id="profile-menu">
+            <div class="menu-user-meta">
+              <div class="menu-user-name" id="menu-user-name">Royal Guest</div>
+              <div class="menu-user-email" id="menu-user-email">guest@royalflame.com</div>
+              <span class="menu-user-role" id="menu-user-role">CUSTOMER</span>
+            </div>
+
+            <a href="orders.html" class="profile-menu-item">
+              <span>📦</span> My Orders
+            </a>
+            <a href="wishlist.html" class="profile-menu-item">
+              <span>❤️</span> My Wishlist
+            </a>
+            <a href="menu.html" class="profile-menu-item">
+              <span>📖</span> Gourmet Menu Book
+            </a>
+
+            <div class="profile-menu-item logout-btn" id="logout-btn">
+              <span>🚪</span> Sign Out
+            </div>
+          </div>
+        </div>
+
+      </div>
+
+    </div>
+  </header>
+
+  <!-- ========================================================================
+       2. CART HERO BANNER
+       ======================================================================== -->
+  <section class="cart-page-hero">
+    <div class="cart-hero-badge">
+      <span>🛒</span> Your Gourmet Selection <span>🛒</span>
+    </div>
+    <h1 class="cart-hero-title">
+      ROYAL <span class="gold-text-glow">DINING CART</span>
+    </h1>
+    <p class="cart-hero-subtitle">
+      "Handcrafted culinary selections awaiting your royal approval and preparation."
+    </p>
+  </section>
+
+  <!-- ========================================================================
+       3. MAIN CART CONTAINER (Requirement 1)
+       ======================================================================== -->
+  <main class="cart-main-section">
+    <div class="cart-layout-grid">
+      
+      <!-- LEFT COLUMN: Cart Items -->
+      <div class="cart-items-panel">
+        <div class="cart-panel-header">
+          <h2 class="cart-panel-title">Selected Delicacies</h2>
+          <button type="button" class="cart-clear-btn" onclick="clearWholeCart()">
+            🗑️ Empty Cart
+          </button>
+        </div>
+
+        <div id="cart-items-container">
+          <!-- Dynamically populated via cart.js -->
+        </div>
+
+        <!-- Empty Cart View -->
+        <div id="cart-empty-container" class="cart-empty-view" style="display: none;">
+          <span class="cart-empty-view-icon">🍽️</span>
+          <h3 style="font-family: var(--font-serif); font-size: 1.5rem; color: var(--gold-300); margin-bottom: 0.5rem;">Your Cart is Empty</h3>
+          <p style="color: var(--text-muted); margin-bottom: 1.5rem; font-size: 0.95rem;">Explore our prestigious Menu Book and add award-winning delicacies.</p>
+          <a href="menu.html" class="btn btn-primary" style="padding: 0.85rem 2rem;">
+            📖 Explore Menu Book
+          </a>
+        </div>
+      </div>
+
+      <!-- RIGHT COLUMN: Price Details & Breakdown -->
+      <aside class="cart-summary-card" id="cart-summary-card">
+        <h3 class="summary-card-title">Order Price Details</h3>
+
+        <!-- Promo Code Input -->
+        <div class="promo-code-wrap">
+          <input 
+            type="text" 
+            id="promo-code-input" 
+            class="promo-input" 
+            placeholder="Enter Coupon (e.g. ROYAL100)"
+          >
+          <button type="button" class="promo-apply-btn" onclick="applyCoupon()">
+            Apply
+          </button>
+        </div>
+
+        <!-- Line Items -->
+        <div class="summary-line-item">
+          <span>Subtotal</span>
+          <span id="cart-subtotal">₹0</span>
+        </div>
+
+        <div class="summary-line-item">
+          <span>Delivery Fee</span>
+          <span id="cart-delivery-fee" style="color: var(--gold-300); font-weight: 600;">₹40</span>
+        </div>
+
+        <div class="summary-line-item">
+          <span>Restaurant GST (5%)</span>
+          <span id="cart-tax">₹0</span>
+        </div>
+
+        <div class="summary-line-item discount">
+          <span>Royalty Welcome Discount</span>
+          <span id="cart-discount">-₹0</span>
+        </div>
+
+        <!-- Grand Total -->
+        <div class="summary-total-item">
+          <span>Grand Total</span>
+          <span class="summary-grand-total" id="cart-grand-total">₹0</span>
+        </div>
+
+        <!-- Proceed to Checkout Button -->
+        <button type="button" class="btn btn-primary checkout-proceed-btn" onclick="proceedToCheckout()">
+          <span>Proceed to Checkout ➔</span>
+        </button>
+
+        <div style="text-align: center; margin-top: 1rem; font-size: 0.78rem; color: var(--text-muted);">
+          🔒 256-Bit SSL Encrypted &bull; 100% Safe Checkout
+        </div>
+      </aside>
+
+    </div>
+  </main>
+
+  <!-- ========================================================================
+       4. LUXURY FOOTER
+       ======================================================================== -->
+  <footer class="footer">
+    <div class="footer-grid">
+      <div>
+        <div style="display: flex; align-items: center; gap: 10px; margin-bottom: 12px;">
+          <span style="font-size: 1.8rem; color: var(--gold-300);">⚜️</span>
+          <h3 class="footer-brand-title"><span class="gold-text">ROYAL FLAME</span></h3>
+        </div>
+        <p class="footer-desc">
+          An opulent epicurean sanctuary celebrating royal heritage feasts and modern culinary mastery.
+        </p>
+      </div>
+
+      <div>
+        <h4 class="footer-col-title">Navigation</h4>
+        <ul class="footer-links">
+          <li><a href="home.html" class="footer-link">Home</a></li>
+          <li><a href="menu.html" class="footer-link">Menu Book</a></li>
+          <li><a href="cart.html" class="footer-link">Dining Cart</a></li>
+          <li><a href="orders.html" class="footer-link">My Orders</a></li>
+        </ul>
+      </div>
+
+      <div>
+        <h4 class="footer-col-title">Dining Hours</h4>
+        <p style="font-size: 0.85rem; color: var(--text-secondary); line-height: 1.6;">
+          Lunch: 12:00 PM – 03:30 PM<br>
+          Dinner: 07:00 PM – 12:30 AM
+        </p>
+      </div>
+    </div>
+
+    <div class="footer-bottom">
+      <div>&copy; 2026 Royal Flame Luxury Restaurant & Gourmet Group. All Rights Reserved.</div>
+    </div>
+  </footer>
+
+  <!-- JavaScript -->
+  <script src="js/cart.js"></script>
+</body>
+</html>

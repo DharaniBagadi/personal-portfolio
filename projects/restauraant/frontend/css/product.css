@@ -1,0 +1,590 @@
+/* ==========================================================================
+   ROYAL FLAME - DISH DETAILS & PRODUCT PAGE STYLES (product.css)
+   ========================================================================== */
+
+/* --------------------------------------------------------------------------
+   1. BREADCRUMB NAVIGATION
+   -------------------------------------------------------------------------- */
+.breadcrumb-wrapper {
+  max-width: 1360px;
+  margin: 1.5rem auto 1rem;
+  padding: 0 1.5rem;
+}
+
+.breadcrumb-list {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  font-size: 0.85rem;
+  color: var(--text-muted);
+  list-style: none;
+  flex-wrap: wrap;
+}
+
+.breadcrumb-item a {
+  color: var(--text-secondary);
+  transition: color var(--transition-fast);
+}
+
+.breadcrumb-item a:hover {
+  color: var(--gold-300);
+}
+
+.breadcrumb-separator {
+  color: var(--gold-500);
+  font-size: 0.75rem;
+}
+
+.breadcrumb-item.active {
+  color: var(--gold-300);
+  font-weight: 600;
+}
+
+/* --------------------------------------------------------------------------
+   2. DISH DETAILS SHOWCASE (2-COLUMN LAYOUT)
+   -------------------------------------------------------------------------- */
+.dish-showcase-section {
+  max-width: 1360px;
+  margin: 1rem auto 3.5rem;
+  padding: 0 1.5rem;
+}
+
+.dish-showcase-grid {
+  display: grid;
+  grid-template-columns: 1.05fr 1.25fr;
+  gap: 3.5rem;
+  background: rgba(18, 18, 26, 0.75);
+  backdrop-filter: blur(20px);
+  -webkit-backdrop-filter: blur(20px);
+  border: 1px solid var(--border-gold);
+  border-radius: var(--radius-lg);
+  padding: 2.5rem;
+  box-shadow: 0 20px 50px rgba(0, 0, 0, 0.85), 0 0 30px rgba(212, 175, 55, 0.1);
+}
+
+/* LEFT COLUMN: Image Showcase */
+.dish-showcase-media {
+  display: flex;
+  flex-direction: column;
+  gap: 1.2rem;
+}
+
+.dish-main-image-wrap {
+  position: relative;
+  width: 100%;
+  height: 440px;
+  border-radius: var(--radius-md);
+  overflow: hidden;
+  border: 1.5px solid var(--border-gold);
+  background: #0e0e13;
+  box-shadow: 0 12px 35px rgba(0, 0, 0, 0.75);
+}
+
+.dish-main-image {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  transition: transform 0.6s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.dish-main-image-wrap:hover .dish-main-image {
+  transform: scale(1.06);
+}
+
+.dish-floating-badge {
+  position: absolute;
+  top: 16px;
+  left: 16px;
+  background: var(--gold-gradient);
+  color: #0d0d12;
+  font-size: 0.82rem;
+  font-weight: 800;
+  padding: 6px 14px;
+  border-radius: var(--radius-sm);
+  letter-spacing: 0.05em;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.6);
+  text-transform: uppercase;
+}
+
+.dish-floating-wishlist {
+  position: absolute;
+  top: 16px;
+  right: 16px;
+  width: 44px;
+  height: 44px;
+  border-radius: 50%;
+  background: rgba(14, 14, 20, 0.85);
+  backdrop-filter: blur(8px);
+  border: 1px solid var(--border-gold);
+  color: #fff;
+  font-size: 1.3rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  transition: all var(--transition-fast);
+}
+
+.dish-floating-wishlist:hover {
+  transform: scale(1.1);
+  border-color: var(--gold-300);
+  box-shadow: var(--shadow-gold-sm);
+}
+
+.dish-floating-wishlist.active {
+  color: #ef4444;
+  border-color: #ef4444;
+}
+
+/* Quick Highlights Bar */
+.dish-highlights-bar {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 12px;
+}
+
+.highlight-box {
+  background: rgba(26, 26, 36, 0.7);
+  border: 1px solid rgba(212, 175, 55, 0.2);
+  border-radius: var(--radius-sm);
+  padding: 10px;
+  text-align: center;
+}
+
+.highlight-box-value {
+  font-family: var(--font-serif);
+  font-weight: 700;
+  font-size: 0.95rem;
+  color: var(--gold-300);
+}
+
+.highlight-box-label {
+  font-size: 0.72rem;
+  color: var(--text-muted);
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  margin-top: 2px;
+}
+
+/* RIGHT COLUMN: Dish Information */
+.dish-showcase-info {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+
+.dish-meta-header {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  margin-bottom: 0.8rem;
+  flex-wrap: wrap;
+}
+
+.dish-category-tag {
+  background: rgba(212, 175, 55, 0.15);
+  border: 1px solid var(--border-gold);
+  color: var(--gold-300);
+  font-size: 0.78rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.1em;
+  padding: 4px 12px;
+  border-radius: var(--radius-full);
+}
+
+.dish-cuisine-tag {
+  background: rgba(255, 255, 255, 0.06);
+  border: 1px solid var(--border-dark);
+  color: var(--text-secondary);
+  font-size: 0.78rem;
+  padding: 4px 12px;
+  border-radius: var(--radius-full);
+}
+
+.dish-title-main {
+  font-family: var(--font-serif);
+  font-size: 2.4rem;
+  font-weight: 800;
+  color: #fff;
+  letter-spacing: 0.04em;
+  line-height: 1.2;
+  margin-bottom: 0.8rem;
+}
+
+/* Ratings & Reviews Bar */
+.dish-rating-overview {
+  display: flex;
+  align-items: center;
+  gap: 14px;
+  margin-bottom: 1.4rem;
+}
+
+.rating-badge-large {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  background: rgba(212, 175, 55, 0.2);
+  border: 1px solid var(--gold-400);
+  color: var(--gold-200);
+  padding: 4px 12px;
+  border-radius: var(--radius-full);
+  font-size: 0.95rem;
+  font-weight: 700;
+}
+
+.rating-reviews-link {
+  color: var(--text-secondary);
+  font-size: 0.88rem;
+  text-decoration: underline;
+  cursor: pointer;
+  transition: color var(--transition-fast);
+}
+
+.rating-reviews-link:hover {
+  color: var(--gold-300);
+}
+
+/* Pricing Section */
+.dish-price-section {
+  display: flex;
+  align-items: baseline;
+  gap: 16px;
+  padding: 1.2rem 0;
+  border-top: 1px solid rgba(255, 255, 255, 0.08);
+  border-bottom: 1px solid rgba(255, 255, 255, 0.08);
+  margin-bottom: 1.4rem;
+}
+
+.dish-final-price-large {
+  font-size: 2.2rem;
+  font-weight: 900;
+  color: var(--gold-300);
+  font-family: var(--font-serif);
+}
+
+.dish-original-price-large {
+  font-size: 1.25rem;
+  color: var(--text-muted);
+  text-decoration: line-through;
+}
+
+.dish-discount-savings {
+  background: rgba(16, 185, 129, 0.15);
+  border: 1px solid rgba(16, 185, 129, 0.4);
+  color: #34d399;
+  font-size: 0.82rem;
+  font-weight: 700;
+  padding: 4px 10px;
+  border-radius: var(--radius-sm);
+}
+
+/* Availability Badge */
+.dish-stock-status {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  font-size: 0.88rem;
+  color: #10b981;
+  font-weight: 600;
+  margin-bottom: 1.2rem;
+}
+
+/* Description */
+.dish-desc-full {
+  font-size: 0.96rem;
+  color: var(--text-secondary);
+  line-height: 1.7;
+  margin-bottom: 1.5rem;
+}
+
+/* Ingredients Section */
+.dish-ingredients-wrap {
+  margin-bottom: 1.6rem;
+}
+
+.section-sublabel {
+  font-size: 0.82rem;
+  text-transform: uppercase;
+  letter-spacing: 0.1em;
+  color: var(--gold-400);
+  font-weight: 700;
+  margin-bottom: 0.6rem;
+}
+
+.ingredients-tags-list {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+}
+
+.ingredient-tag {
+  background: rgba(255, 255, 255, 0.05);
+  border: 1px solid var(--border-gold);
+  color: var(--text-primary);
+  font-size: 0.82rem;
+  padding: 5px 12px;
+  border-radius: var(--radius-full);
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+}
+
+/* Quantity & Action Buttons */
+.dish-purchase-controls {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 16px;
+  margin-top: 1rem;
+}
+
+.qty-picker {
+  display: flex;
+  align-items: center;
+  background: rgba(14, 14, 20, 0.9);
+  border: 1px solid var(--border-gold);
+  border-radius: var(--radius-sm);
+  overflow: hidden;
+}
+
+.qty-picker-btn {
+  background: transparent;
+  border: none;
+  color: var(--gold-300);
+  font-size: 1.2rem;
+  width: 42px;
+  height: 44px;
+  cursor: pointer;
+  transition: background var(--transition-fast);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.qty-picker-btn:hover {
+  background: rgba(212, 175, 55, 0.2);
+}
+
+.qty-picker-input {
+  width: 48px;
+  text-align: center;
+  background: transparent;
+  border: none;
+  color: #fff;
+  font-size: 1.05rem;
+  font-weight: 700;
+}
+
+.dish-cta-btn {
+  flex: 1;
+  min-width: 150px;
+  padding: 0.85rem 1.6rem;
+  font-size: 0.95rem;
+  font-weight: 700;
+}
+
+/* --------------------------------------------------------------------------
+   3. CUSTOMER REVIEWS SECTION
+   -------------------------------------------------------------------------- */
+.reviews-section {
+  max-width: 1360px;
+  margin: 0 auto 4rem;
+  padding: 0 1.5rem;
+}
+
+.reviews-container {
+  background: rgba(18, 18, 26, 0.7);
+  border: 1px solid var(--border-gold);
+  border-radius: var(--radius-lg);
+  padding: 2.5rem;
+  box-shadow: var(--shadow-card);
+}
+
+.reviews-header-block {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.08);
+  padding-bottom: 1.5rem;
+  margin-bottom: 2rem;
+  flex-wrap: wrap;
+  gap: 1.5rem;
+}
+
+.reviews-score-card {
+  display: flex;
+  align-items: center;
+  gap: 20px;
+}
+
+.avg-rating-huge {
+  font-family: var(--font-serif);
+  font-size: 3.5rem;
+  font-weight: 900;
+  color: var(--gold-300);
+  line-height: 1;
+}
+
+.stars-visual {
+  color: var(--star-color);
+  font-size: 1.2rem;
+  letter-spacing: 2px;
+}
+
+.total-reviews-count {
+  font-size: 0.88rem;
+  color: var(--text-muted);
+  margin-top: 4px;
+}
+
+/* Write Review Form Card */
+.write-review-card {
+  background: rgba(24, 24, 34, 0.85);
+  border: 1px solid var(--border-gold);
+  border-radius: var(--radius-md);
+  padding: 1.8rem;
+  margin-bottom: 2.5rem;
+}
+
+.write-review-title {
+  font-family: var(--font-serif);
+  font-size: 1.2rem;
+  color: var(--gold-200);
+  margin-bottom: 1rem;
+}
+
+.star-rating-selector {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  margin-bottom: 1.2rem;
+}
+
+.star-rating-btn {
+  background: transparent;
+  border: none;
+  font-size: 1.8rem;
+  color: #4b4b5a;
+  cursor: pointer;
+  transition: all var(--transition-fast);
+  padding: 0 2px;
+}
+
+.star-rating-btn.active, .star-rating-btn:hover {
+  color: var(--star-color);
+  transform: scale(1.15);
+}
+
+.review-textarea {
+  width: 100%;
+  background: rgba(12, 12, 16, 0.8);
+  border: 1px solid var(--border-gold);
+  border-radius: var(--radius-sm);
+  padding: 12px 14px;
+  color: #fff;
+  font-size: 0.9rem;
+  min-height: 90px;
+  resize: vertical;
+  margin-bottom: 1rem;
+}
+
+.review-textarea:focus {
+  border-color: var(--gold-300);
+  outline: none;
+  box-shadow: var(--shadow-gold-sm);
+}
+
+/* Reviews List */
+.reviews-list {
+  display: flex;
+  flex-direction: column;
+  gap: 1.2rem;
+}
+
+.review-item-card {
+  background: rgba(14, 14, 20, 0.7);
+  border: 1px solid rgba(255, 255, 255, 0.06);
+  border-radius: var(--radius-md);
+  padding: 1.4rem 1.6rem;
+  transition: border-color var(--transition-fast);
+}
+
+.review-item-card:hover {
+  border-color: var(--border-gold);
+}
+
+.review-user-row {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: 0.6rem;
+}
+
+.reviewer-meta {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+
+.reviewer-avatar {
+  width: 38px;
+  height: 38px;
+  border-radius: 50%;
+  background: var(--gold-gradient);
+  color: #0b0b0f;
+  font-weight: 800;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 0.95rem;
+}
+
+.reviewer-name {
+  font-weight: 700;
+  font-size: 0.94rem;
+  color: #fff;
+}
+
+.verified-patron-badge {
+  font-size: 0.72rem;
+  color: #10b981;
+  display: inline-flex;
+  align-items: center;
+  gap: 4px;
+}
+
+.review-date {
+  font-size: 0.8rem;
+  color: var(--text-muted);
+}
+
+.review-text {
+  font-size: 0.92rem;
+  color: var(--text-secondary);
+  line-height: 1.6;
+}
+
+/* --------------------------------------------------------------------------
+   4. RELATED DISHES SECTION
+   -------------------------------------------------------------------------- */
+.related-dishes-section {
+  max-width: 1360px;
+  margin: 0 auto 5rem;
+  padding: 0 1.5rem;
+}
+
+/* Responsive */
+@media (max-width: 992px) {
+  .dish-showcase-grid {
+    grid-template-columns: 1fr;
+    gap: 2rem;
+    padding: 1.8rem;
+  }
+  .dish-main-image-wrap {
+    height: 340px;
+  }
+  .dish-title-main {
+    font-size: 1.9rem;
+  }
+}

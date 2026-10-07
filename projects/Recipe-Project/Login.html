@@ -1,0 +1,164 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Login Page</title>
+
+<style>
+
+body{
+    margin:0;
+    font-family:Arial;
+}
+
+/* LOGIN PAGE */
+#loginPage{
+    background:url('images/login.png') center/cover;
+    height:100vh;
+    display:flex;
+    justify-content:center;
+    align-items:center;
+}
+
+.container{
+    background:rgba(255,255,255,0.9);
+    padding:30px;
+    border-radius:10px;
+    width:300px;
+    text-align:center;
+}
+
+input{
+    width:100%;
+    padding:10px;
+    margin:10px 0;
+    border-radius:5px;
+    border:1px solid #ccc;
+}
+
+button{
+    width:100%;
+    padding:10px;
+    border:none;
+    background:#ff6f47;
+    color:white;
+    border-radius:5px;
+    cursor:pointer;
+}
+
+.toggle{
+    margin-top:10px;
+    color:blue;
+    cursor:pointer;
+}
+
+</style>
+</head>
+
+<body>
+
+<div id="loginPage">
+
+<div class="container">
+
+<h2 id="formTitle">Login</h2>
+
+<input type="text"
+id="name"
+placeholder="Enter Name"
+style="display:none;">
+
+<input type="email"
+id="email"
+placeholder="Enter Email">
+
+<input type="password"
+id="password"
+placeholder="Enter Password">
+
+<button onclick="handleAction()">Sign In</button>
+
+<p class="toggle" onclick="toggleForm()">
+New user? Sign Up
+</p>
+
+</div>
+
+</div>
+
+<script>
+
+let isSignup = false;
+
+/* Toggle Form */
+function toggleForm(){
+
+    isSignup = !isSignup;
+
+    document.getElementById("name").style.display =
+        isSignup ? "block" : "none";
+
+    document.getElementById("formTitle").innerText =
+        isSignup ? "Sign Up" : "Login";
+
+    document.querySelector("button").innerText =
+        isSignup ? "Sign Up" : "Sign In";
+
+    document.querySelector(".toggle").innerText =
+        isSignup ? "Already user? Login" : "New user? Sign Up";
+}
+
+/* Login / Signup */
+function handleAction(){
+
+    let name =
+        document.getElementById("name").value;
+
+    let email =
+        document.getElementById("email").value;
+
+    let password =
+        document.getElementById("password").value;
+
+    if(isSignup){
+
+        if(name && email && password){
+
+            localStorage.setItem("name", name);
+            localStorage.setItem("email", email);
+            localStorage.setItem("password", password);
+
+            alert(name + " signed up successfully ✅");
+
+            window.location.href = "home.html";
+
+        }else{
+            alert("Please fill all fields");
+        }
+
+    }else{
+
+        let storedEmail =
+            localStorage.getItem("email");
+
+        let storedPassword =
+            localStorage.getItem("password");
+
+        if(email === storedEmail &&
+           password === storedPassword){
+
+            alert("Login Successful ✅");
+
+            window.location.href = "home.html";
+
+        }else{
+            alert("Invalid Email or Password ❌");
+        }
+    }
+}
+
+</script>
+
+</body>
+</html>

@@ -1,0 +1,299 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <title>Dinner Recipes</title>
+    <link rel="stylesheet" href="style2.css" />
+    <style>
+        
+.navbar {
+  display: flex;
+  justify-content: space-between;
+  padding: 20px 40px;
+}
+
+/* Left links */
+.nav-left {
+  display: flex;
+  gap: 20px;
+}
+
+#abt, #category {
+  text-decoration: none;
+  color: black;
+  font-size: 18px;
+}
+
+/* Right icon */
+.nav-right i {
+    font-size: 28px;
+   color: black;
+    }
+      #top-title {
+        text-align: center;
+        font-size: 40px;
+        color: #2d2d2d;
+        margin-top: 30px;
+        margin-bottom: 30px;
+      }
+      #top-desc {
+        text-align: center;
+        font-size: 20px;
+        color: #555;
+        margin-bottom: 30px;
+      }
+      .btn-container {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 15px;
+        justify-content: center;
+        margin-top: 20px;
+      }
+      .recipe-btn {
+        padding: 12px 20px;
+        background: #b56576;
+        color: white;
+        border: none;
+        border-radius: 8px;
+        cursor: pointer;
+        font-size: 16px;
+        transition: 0.3s;
+      }
+      .recipe-btn:hover {
+        background: #ff6f61;
+      }
+      .recipe-box {
+        margin-top: 30px;
+        padding: 20px;
+        background: #efbfbb;
+        border-radius: 12px;
+        box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+        display: none;
+        text-align: center;
+        font-size: 25px;
+      }
+      .recipe-box ul,
+      .recipe-box ol {
+        text-align: left;
+        padding-left: 25px;
+        max-width: 500px;
+        margin: 10px auto;
+      }
+    </style>
+  </head>
+  <body>
+    <div class="navbar">
+    <div class="nav-left">
+      <a href="about.html" id="abt">About</a>
+      <a href="category.html" id="category">Category</a>
+    </div>
+    <div class="nav-right">
+        <a href="main.html" target="_self" style="color:black;"><i class="fa-regular fa-house" style="font-size: 30px;"></i></a>
+       
+    </div>
+  </div>
+    <h1 id="top-title">Top Recommended Dinners</h1>
+    <p id="top-desc">Here are the top 10 dinner items:</p>
+    <div class="btn-container">
+      <button class="recipe-btn" onclick="showRecipe('chickenCurry')">
+        Chicken Curry
+      </button>
+      <button class="recipe-btn" onclick="showRecipe('muttonCurry')">
+        Mutton Curry
+      </button>
+      <button class="recipe-btn" onclick="showRecipe('vegPulao')">
+        Veg Pulao
+      </button>
+      <button class="recipe-btn" onclick="showRecipe('dalFry')">Dal Fry</button>
+      <button class="recipe-btn" onclick="showRecipe('paneerTikka')">
+        Paneer Tikka
+      </button>
+      <button class="recipe-btn" onclick="showRecipe('fishFry')">
+        Fish Fry
+      </button>
+      <button class="recipe-btn" onclick="showRecipe('butterChicken')">
+        Butter Chicken
+      </button>
+      <button class="recipe-btn" onclick="showRecipe('vegKorma')">
+        Veg Korma
+      </button>
+      <button class="recipe-btn" onclick="showRecipe('eggCurry')">
+        Egg Curry
+      </button>
+      <button class="recipe-btn" onclick="showRecipe('curdRice')">
+        Curd Rice
+      </button>
+    </div>
+
+    <div id="recipe-box" class="recipe-box"></div>
+
+    <script>
+      function showRecipe(item) {
+        const recipes = {
+          chickenCurry: {
+            ingredients: [
+              "500g chicken pieces",
+              "Onion, tomato, ginger, garlic",
+              "Spices: chili, turmeric, garam masala",
+              "Oil, salt",
+            ],
+            steps: [
+              "Heat oil, sauté onion, ginger, garlic.",
+              "Add tomato and spices, cook into masala.",
+              "Add chicken pieces, stir well.",
+              "Add water, cover and simmer until cooked.",
+              "Serve hot with rice or roti.",
+            ],
+          },
+          muttonCurry: {
+            ingredients: [
+              "500g mutton pieces",
+              "Onion, tomato, ginger, garlic",
+              "Spices: chili, turmeric, coriander powder",
+              "Oil, salt",
+            ],
+            steps: [
+              "Marinate mutton with spices.",
+              "Heat oil, sauté onion, ginger, garlic.",
+              "Add tomato and cook masala.",
+              "Add mutton, water and pressure cook.",
+              "Serve hot with rice or naan.",
+            ],
+          },
+          vegPulao: {
+            ingredients: [
+              "2 cups basmati rice",
+              "Mixed vegetables",
+              "Whole spices: bay leaf, cardamom, cloves",
+              "Salt, oil",
+            ],
+            steps: [
+              "Soak rice for 30 minutes.",
+              "Heat oil, add whole spices.",
+              "Add vegetables and sauté.",
+              "Add rice and water, cook until fluffy.",
+              "Serve hot with raita.",
+            ],
+          },
+          dalFry: {
+            ingredients: [
+              "1 cup toor dal",
+              "Onion, tomato",
+              "Garlic, ginger",
+              "Spices: turmeric, chili, cumin",
+            ],
+            steps: [
+              "Cook dal with turmeric until soft.",
+              "Prepare tadka with onion, tomato, garlic.",
+              "Add tadka to dal.",
+              "Simmer for 5 minutes.",
+              "Serve with rice or roti.",
+            ],
+          },
+          paneerTikka: {
+            ingredients: [
+              "200g paneer cubes",
+              "Curd, ginger-garlic paste",
+              "Spices: chili, turmeric, garam masala",
+            ],
+            steps: [
+              "Marinate paneer with curd and spices.",
+              "Skewer paneer pieces.",
+              "Grill or roast until golden.",
+              "Serve with mint chutney.",
+            ],
+          },
+          fishFry: {
+            ingredients: [
+              "500g fish pieces",
+              "Spices: chili, turmeric, coriander",
+              "Oil, salt",
+            ],
+            steps: [
+              "Marinate fish with spices.",
+              "Heat oil in pan.",
+              "Shallow fry fish until crisp.",
+              "Serve hot with lemon wedges.",
+            ],
+          },
+          butterChicken: {
+            ingredients: [
+              "500g chicken",
+              "Butter, cream",
+              "Tomato puree",
+              "Spices: garam masala, chili",
+            ],
+            steps: [
+              "Cook chicken pieces with spices.",
+              "Prepare gravy with butter, tomato puree.",
+              "Add cream and chicken.",
+              "Simmer until thick.",
+              "Serve with naan or rice.",
+            ],
+          },
+          vegKorma: {
+            ingredients: [
+              "Mixed vegetables",
+              "Onion, tomato, ginger, garlic",
+              "Cashew paste",
+              "Spices: chili, turmeric, garam masala",
+            ],
+            steps: [
+              "Sauté onion, ginger, garlic.",
+              "Add tomato and spices.",
+              "Add vegetables and cashew paste.",
+              "Cook until vegetables are tender.",
+              "Serve hot with roti.",
+            ],
+          },
+          eggCurry: {
+            ingredients: [
+              "4 boiled eggs",
+              "Onion, tomato",
+              "Spices: chili, turmeric, garam masala",
+              "Oil, salt",
+            ],
+            steps: [
+              "Heat oil, sauté onion and tomato.",
+              "Add spices and cook masala.",
+              "Add boiled eggs, stir gently.",
+              "Simmer for 5 minutes.",
+              "Serve with rice or roti.",
+            ],
+          },
+          curdRice: {
+            ingredients: [
+              "2 cups cooked rice",
+              "1 cup curd",
+              "Green chili, ginger",
+              "Curry leaves, mustard seeds",
+            ],
+            steps: [
+              "Mix rice with curd.",
+              "Prepare tadka with chili, ginger, curry leaves.",
+              "Add tadka to rice.",
+              "Mix well and serve chilled.",
+            ],
+          },
+        };
+
+        const recipe = recipes[item];
+        const box = document.getElementById("recipe-box");
+
+        if (recipe) {
+          box.innerHTML = `
+            <h2>${item.toUpperCase()}</h2>
+            <h3>Ingredients:</h3>
+            <ul>${recipe.ingredients.map((i) => `<li>${i}</li>`).join("")}</ul>
+            <h3>Process:</h3>
+            <ol>${recipe.steps.map((s) => `<li>${s}</li>`).join("")}</ol>
+          `;
+          box.style.display = "block";
+        } else {
+          box.innerHTML = `<p>Recipe not found.</p>`;
+          box.style.display = "block";
+        }
+      }
+    </script>
+  </body>
+</html>

@@ -1,0 +1,218 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>My Orders | ROYAL FLAME Luxury Dining</title>
+  <meta name="description" content="Track your active fine dining orders, review past banquet receipts, and monitor live kitchen preparation status.">
+
+  <!-- CSS Stylesheets -->
+  <link rel="stylesheet" href="css/style.css">
+  <link rel="stylesheet" href="css/home.css">
+  <link rel="stylesheet" href="css/orders.css">
+</head>
+<body>
+
+  <!-- Toast Notification Container -->
+  <div id="toast-container"></div>
+
+  <!-- ========================================================================
+       1. STICKY LUXURY NAVIGATION BAR
+       ======================================================================== -->
+  <header class="navbar-sticky">
+    <div class="nav-container">
+      
+      <!-- Left: Logo & Brand -->
+      <a href="home.html" class="nav-brand">
+        <div class="brand-crest">⚜️</div>
+        <div class="brand-info">
+          <span class="brand-title"><span class="gold-text">ROYAL FLAME</span></span>
+          <span class="brand-tag">Fine Dining &bull; <span style="color: var(--gold-300);">My Orders</span></span>
+        </div>
+      </a>
+
+      <!-- Center: Search Link -->
+      <div class="nav-search-wrapper">
+        <div class="nav-search-box" onclick="window.location.href='menu.html'" style="cursor: pointer;">
+          <span class="search-icon">🔍</span>
+          <input 
+            type="text" 
+            class="nav-search-input" 
+            placeholder="Search menu book for signature dishes..." 
+            readonly 
+            style="cursor: pointer;"
+          >
+        </div>
+      </div>
+
+      <!-- Right: Action Icons & Profile -->
+      <div class="nav-actions">
+        
+        <!-- Menu Book -->
+        <a href="menu.html" class="nav-action-item" title="Explore Menu Book">
+          <div class="action-icon-wrap">
+            <span>📖</span>
+          </div>
+          <span>Menu Book</span>
+        </a>
+
+        <!-- Wishlist -->
+        <a href="wishlist.html" class="nav-action-item" title="View Wishlist">
+          <div class="action-icon-wrap">
+            <span>❤️</span>
+          </div>
+          <span>Wishlist</span>
+        </a>
+
+        <!-- Cart -->
+        <a href="cart.html" class="nav-action-item" title="Dining Cart">
+          <div class="action-icon-wrap">
+            <span>🛒</span>
+            <span class="nav-badge" id="cart-count-badge">0</span>
+          </div>
+          <span>Cart</span>
+        </a>
+
+        <!-- Notifications Dropdown (Requirement 10) -->
+        <div class="notifications-dropdown-wrap">
+          <button type="button" class="nav-action-item" id="notification-trigger" title="Royal Notifications">
+            <div class="action-icon-wrap">
+              <span>🔔</span>
+              <span class="nav-badge" id="notification-badge" style="display: none;">0</span>
+            </div>
+            <span>Alerts</span>
+          </button>
+
+          <div class="notifications-menu" id="notifications-menu">
+            <div class="notifications-header">
+              <span class="notifications-title">👑 Kitchen & Order Alerts</span>
+              <button type="button" class="notifications-mark-read" id="mark-all-read-btn">Mark all read</button>
+            </div>
+            <div class="notifications-list" id="notifications-list">
+              <div class="notifications-empty">Loading royal notifications...</div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Orders (Active) -->
+        <a href="orders.html" class="nav-action-item" title="My Orders" style="color: var(--gold-300);">
+          <div class="action-icon-wrap">
+            <span>📦</span>
+          </div>
+          <span style="font-weight: 700;">Orders</span>
+        </a>
+
+        <!-- User Profile Dropdown -->
+        <div class="profile-dropdown-wrap">
+          <div class="profile-trigger" id="profile-trigger" title="User Account Settings">
+            <div class="profile-avatar" id="user-avatar-letter">U</div>
+            <span class="profile-username" id="navbar-username">Guest</span>
+            <span style="font-size: 0.7rem; color: var(--gold-400);">▼</span>
+          </div>
+
+          <div class="profile-menu" id="profile-menu">
+            <div class="menu-user-meta">
+              <div class="menu-user-name" id="menu-user-name">Royal Guest</div>
+              <div class="menu-user-email" id="menu-user-email">guest@royalflame.com</div>
+              <span class="menu-user-role" id="menu-user-role">CUSTOMER</span>
+            </div>
+            <a href="orders.html" class="profile-menu-item"><span>📦</span> My Orders</a>
+            <a href="cart.html" class="profile-menu-item"><span>🛒</span> Dining Cart</a>
+            <a href="wishlist.html" class="profile-menu-item"><span>❤️</span> My Wishlist</a>
+            <div class="profile-menu-item logout-btn" id="logout-btn"><span>🚪</span> Sign Out</div>
+          </div>
+        </div>
+
+      </div>
+
+    </div>
+  </header>
+
+  <!-- ========================================================================
+       2. ORDERS HERO BANNER
+       ======================================================================== -->
+  <section class="orders-page-hero">
+    <div class="orders-hero-badge">
+      <span>📦</span> Dining History & Live Tracking <span>📦</span>
+    </div>
+    <h1 class="orders-hero-title">
+      MY ROYAL <span class="gold-text-glow">ORDERS</span>
+    </h1>
+    <p style="font-family: var(--font-display); font-style: italic; color: var(--text-secondary); max-width: 600px; margin: 0 auto;">
+      "Track your active gourmet orders and revisit your historical fine dining celebrations."
+    </p>
+  </section>
+
+  <!-- ========================================================================
+       3. MAIN ORDERS LIST (Requirement 8)
+       ======================================================================== -->
+  <main class="orders-main-section">
+    
+    <!-- Filter Tabs -->
+    <div class="orders-filter-bar">
+      <button type="button" class="orders-filter-btn active" data-filter="all">All Orders</button>
+      <button type="button" class="orders-filter-btn" data-filter="active">In Progress 👨‍🍳</button>
+      <button type="button" class="orders-filter-btn" data-filter="delivered">Delivered ✓</button>
+      <button type="button" class="orders-filter-btn" data-filter="cancelled">Cancelled</button>
+    </div>
+
+    <!-- Orders Feed -->
+    <div class="orders-list-grid" id="orders-list-container">
+      <!-- Dynamically populated via orders.js -->
+    </div>
+
+    <!-- Empty State -->
+    <div id="orders-empty-state" class="cart-empty-view" style="display: none;">
+      <span class="cart-empty-view-icon">📦</span>
+      <h3 style="font-family: var(--font-serif); font-size: 1.5rem; color: var(--gold-300); margin-bottom: 0.5rem;">No Orders Found</h3>
+      <p style="color: var(--text-muted); margin-bottom: 1.5rem;">You haven't placed any royal feast orders matching this filter.</p>
+      <a href="menu.html" class="btn btn-primary" style="padding: 0.85rem 2rem;">
+        📖 Explore Menu Book
+      </a>
+    </div>
+
+  </main>
+
+  <!-- ========================================================================
+       4. LUXURY FOOTER
+       ======================================================================== -->
+  <footer class="footer">
+    <div class="footer-grid">
+      <div>
+        <div style="display: flex; align-items: center; gap: 10px; margin-bottom: 12px;">
+          <span style="font-size: 1.8rem; color: var(--gold-300);">⚜️</span>
+          <h3 class="footer-brand-title"><span class="gold-text">ROYAL FLAME</span></h3>
+        </div>
+        <p class="footer-desc">
+          An opulent epicurean sanctuary celebrating royal feasts and modern culinary mastery.
+        </p>
+      </div>
+
+      <div>
+        <h4 class="footer-col-title">Navigation</h4>
+        <ul class="footer-links">
+          <li><a href="home.html" class="footer-link">Home</a></li>
+          <li><a href="menu.html" class="footer-link">Menu Book</a></li>
+          <li><a href="cart.html" class="footer-link">Dining Cart</a></li>
+          <li><a href="orders.html" class="footer-link">My Orders</a></li>
+        </ul>
+      </div>
+
+      <div>
+        <h4 class="footer-col-title">Dining Hours</h4>
+        <p style="font-size: 0.85rem; color: var(--text-secondary); line-height: 1.6;">
+          Lunch: 12:00 PM – 03:30 PM<br>
+          Dinner: 07:00 PM – 12:30 AM
+        </p>
+      </div>
+    </div>
+
+    <div class="footer-bottom">
+      <div>&copy; 2026 Royal Flame Luxury Restaurant & Gourmet Group. All Rights Reserved.</div>
+    </div>
+  </footer>
+
+  <!-- JavaScript -->
+  <script src="js/orders.js"></script>
+</body>
+</html>

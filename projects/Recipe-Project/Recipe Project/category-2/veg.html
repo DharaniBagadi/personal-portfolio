@@ -1,0 +1,88 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <title>Vegetarian Recipes</title>
+    <link rel="stylesheet" href="style2.css" />
+    <style>
+      #mainhead {
+        text-align: center;
+        font-size: 36px;
+        margin-top: 30px;
+        color: #2d2d2d;
+      }
+
+      .item-list {
+        display: flex;
+        flex-wrap: wrap; /* allows multiple rows */
+        gap: 30px; /* spacing between cards */
+        justify-content: center; /* center the row */
+        margin-top: 50px;
+      }
+
+      .item-card {
+        display: flex;
+        flex-direction: column; /* stack image above text */
+        align-items: center;
+        width: 180px; /* fixed card width */
+        text-decoration: none; /* remove underline */
+        color: #2d2d2d;
+      }
+
+      .item-card img {
+        width: 150px; /* smaller thumbnails */
+        height: auto;
+        border-radius: 6px;
+      }
+
+      .item-card h3 {
+        margin-top: 10px;
+        font-size: 20px;
+        text-align: center; /* centers text under image */
+        word-wrap: break-word; /* prevents text overflow */
+        font-weight: 300;
+      }
+    </style>
+  </head>
+  <body>
+    <h1 id="mainhead">Vegetarian Recipes</h1>
+    <div class="item-list">
+      <a href="Manchuria.html" class="item-card">
+        <img src="Manchuria-images/Manchuria.jpg" alt="Paneer Butter Masala" />
+        <h3>Manchurian Recipe</h3>
+      </a>
+      <a href="DumBiryani.html" class="item-card">
+        <img src="DumBiryani-images/DumBiryani.jpg" alt="veg Dum Biryani" />
+        <h3>veg Dum Biryani</h3>
+      </a>
+      <a href="KadaiMushroom.html" class="item-card">
+        <img src="KadaiMushroom-images/KadaiMushroom.jpg" alt="KadaiMushroom" />
+        <h3>KadaiMushroom Recipe</h3>
+      </a>
+      <a href="Pulao.html" class="item-card">
+        <img src="Pulao-images/Pulao.jpg" alt="Pulao " />
+        <h3>Pulao Recipe</h3>
+      </a>
+      <a href="Sambar .html" class="item-card">
+        <img src="Sambar-images/Sambar.jpg" alt="Sambar" />
+        <h3>Sambar</h3>
+      </a>
+      <a href="cabbage.html" class="item-card">
+        <img src="cabbage-images/cabbage.jpg" alt="cabbage" />
+        <h3>Veg Korma</h3>
+      </a>
+      <a href="bhendi.html" class="item-card">
+        <img src="bhendi-images/bhendi.jpg" alt="bhendi" />
+        <h3>Bhindi Do Pyaza Recipe</h3>
+      </a>
+      <a href="lemon.html" class="item-card">
+        <img src="Lemon-images/Lemon.jpg" alt="Lemon" />
+        <h3>Lemon Rice Recipe</h3>
+      </a>
+      <a href="babycorn.html" class="item-card">
+        <img src="babycorn-images/babycorn.jpg" alt="babycorn" />
+        <h3>Chilli Baby Corn</h3>
+      </a>
+    </div>
+  </body>
+</html>

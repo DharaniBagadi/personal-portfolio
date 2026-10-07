@@ -1,0 +1,390 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Payment & Settlement | ROYAL FLAME Luxury Dining</title>
+  <meta name="description" content="Select payment method: UPI, Credit/Debit Card, Net Banking, or Cash on Delivery to finalize your royal dining order.">
+
+  <!-- CSS Stylesheets -->
+  <link rel="stylesheet" href="css/style.css">
+  <link rel="stylesheet" href="css/home.css">
+  <link rel="stylesheet" href="css/checkout.css">
+  <link rel="stylesheet" href="css/payment.css">
+</head>
+<body>
+
+  <!-- Toast Notification Container -->
+  <div id="toast-container"></div>
+
+  <!-- ========================================================================
+       1. STICKY LUXURY NAVIGATION BAR
+       ======================================================================== -->
+  <header class="navbar-sticky">
+    <div class="nav-container">
+      
+      <!-- Left: Logo & Brand -->
+      <a href="home.html" class="nav-brand">
+        <div class="brand-crest">⚜️</div>
+        <div class="brand-info">
+          <span class="brand-title"><span class="gold-text">ROYAL FLAME</span></span>
+          <span class="brand-tag">Fine Dining &bull; <span style="color: var(--gold-300);">Payment</span></span>
+        </div>
+      </a>
+
+      <!-- Center: Title -->
+      <div style="font-family: var(--font-serif); font-size: 1.1rem; color: var(--gold-200); font-weight: 700;">
+        ROYAL PAYMENT GATEWAY 💳
+      </div>
+
+      <!-- Right: Action Icons & Profile -->
+      <div class="nav-actions">
+        <a href="checkout.html" class="nav-action-item" title="Back to Checkout">
+          <div class="action-icon-wrap"><span>⬅️</span></div>
+          <span>Back</span>
+        </a>
+
+        <div class="profile-dropdown-wrap">
+          <div class="profile-trigger" id="profile-trigger" title="User Account Settings">
+            <div class="profile-avatar" id="user-avatar-letter">U</div>
+            <span class="profile-username" id="navbar-username">Guest</span>
+            <span style="font-size: 0.7rem; color: var(--gold-400);">▼</span>
+          </div>
+
+          <div class="profile-menu" id="profile-menu">
+            <div class="menu-user-meta">
+              <div class="menu-user-name" id="menu-user-name">Royal Guest</div>
+              <div class="menu-user-email" id="menu-user-email">guest@royalflame.com</div>
+              <span class="menu-user-role" id="menu-user-role">CUSTOMER</span>
+            </div>
+            <a href="orders.html" class="profile-menu-item"><span>📦</span> My Orders</a>
+            <a href="cart.html" class="profile-menu-item"><span>🛒</span> Dining Cart</a>
+            <div class="profile-menu-item logout-btn" id="logout-btn"><span>🚪</span> Sign Out</div>
+          </div>
+        </div>
+      </div>
+
+    </div>
+  </header>
+
+  <!-- ========================================================================
+       2. CHECKOUT PROGRESS TRACKER
+       ======================================================================== -->
+  <div class="checkout-progress-bar">
+    <div class="progress-step completed">
+      <div class="step-bubble">✓</div>
+      <span class="step-label">Dining Cart</span>
+    </div>
+    <div class="progress-step completed">
+      <div class="step-bubble">✓</div>
+      <span class="step-label">Address</span>
+    </div>
+    <div class="progress-step active">
+      <div class="step-bubble">3</div>
+      <span class="step-label">Payment</span>
+    </div>
+  </div>
+
+  <!-- ========================================================================
+       3. MAIN PAYMENT SECTION (Requirement 6)
+       ======================================================================== -->
+  <main class="payment-container">
+    <div class="payment-layout-grid">
+      
+      <!-- LEFT COLUMN: Payment Methods Selection -->
+      <div class="payment-methods-card">
+        <h2 class="payment-card-title">
+          <span>💳</span> Select Payment Method
+        </h2>
+
+        <!-- Method Tabs Navigation -->
+        <div class="payment-tabs-nav">
+          <button type="button" class="payment-tab-btn active" data-method="UPI" data-target="upi">
+            <span class="payment-tab-icon">📱</span>
+            <span>UPI / QR</span>
+          </button>
+          <button type="button" class="payment-tab-btn" data-method="Credit Card" data-target="card">
+            <span class="payment-tab-icon">💳</span>
+            <span>Credit Card</span>
+          </button>
+          <button type="button" class="payment-tab-btn" data-method="Debit Card" data-target="debit">
+            <span class="payment-tab-icon">🏧</span>
+            <span>Debit Card</span>
+          </button>
+          <button type="button" class="payment-tab-btn" data-method="Net Banking" data-target="netbanking">
+            <span class="payment-tab-icon">🏛️</span>
+            <span>Net Banking</span>
+          </button>
+          <button type="button" class="payment-tab-btn" data-method="Cash on Delivery" data-target="cod">
+            <span class="payment-tab-icon">💵</span>
+            <span>Cash on Delivery</span>
+          </button>
+        </div>
+
+        <!-- 1. UPI TAB CONTENT -->
+        <div class="payment-tab-content active" id="tab-upi">
+          <h3 style="font-family: var(--font-serif); font-size: 1.1rem; color: var(--gold-200); margin-bottom: 1rem;">
+            Instant UPI Payment (Google Pay / PhonePe / Paytm / BHIM)
+          </h3>
+
+          <div class="upi-app-options">
+            <div class="upi-app-card selected">
+              <span style="font-size: 1.6rem;">⚡</span>
+              <div style="font-weight: 700; font-size: 0.85rem; color: #fff;">Google Pay</div>
+            </div>
+            <div class="upi-app-card">
+              <span style="font-size: 1.6rem;">🟣</span>
+              <div style="font-weight: 700; font-size: 0.85rem; color: #fff;">PhonePe</div>
+            </div>
+            <div class="upi-app-card">
+              <span style="font-size: 1.6rem;">🔷</span>
+              <div style="font-weight: 700; font-size: 0.85rem; color: #fff;">Paytm UPI</div>
+            </div>
+          </div>
+
+          <div class="input-group">
+            <label class="input-label">Or Enter Custom Virtual Payment Address (VPA)</label>
+            <input type="text" class="input-field" placeholder="username@okhdfcbank or yourname@upi" value="arthur.wellesley@royalpay">
+          </div>
+          <p style="font-size: 0.8rem; color: var(--text-muted);">
+            A payment request prompt will be dispatched to your linked UPI application upon authorization.
+          </p>
+        </div>
+
+        <!-- 2. CREDIT CARD TAB CONTENT -->
+        <div class="payment-tab-content" id="tab-card">
+          <!-- 3D Luxury Gold Card Preview -->
+          <div class="virtual-card-wrap">
+            <div style="display: flex; justify-content: space-between; align-items: center;">
+              <div class="virtual-card-chip"></div>
+              <span style="font-family: var(--font-serif); font-size: 0.9rem; font-weight: 800; color: var(--gold-300); letter-spacing: 2px;">ROYAL FLAME VIP</span>
+            </div>
+            <div class="virtual-card-number" id="preview-card-num">•••• •••• •••• 4242</div>
+            <div class="virtual-card-meta">
+              <div>
+                <div style="font-size: 0.65rem; color: var(--gold-400); text-transform: uppercase;">Cardholder</div>
+                <div class="virtual-card-holder" id="preview-card-holder">LORD ARTHUR WELLESLEY</div>
+              </div>
+              <div style="text-align: right;">
+                <div style="font-size: 0.65rem; color: var(--gold-400); text-transform: uppercase;">Expires</div>
+                <div class="virtual-card-exp" id="preview-card-exp">12/28</div>
+              </div>
+            </div>
+          </div>
+
+          <div class="input-group">
+            <label class="input-label">Card Number</label>
+            <input type="text" id="card-num-input" class="input-field" placeholder="4242 •••• •••• 4242" maxlength="19">
+          </div>
+
+          <div class="form-grid-2col">
+            <div class="input-group">
+              <label class="input-label">Cardholder Name</label>
+              <input type="text" id="card-holder-input" class="input-field" placeholder="Full Name as on Card">
+            </div>
+            <div class="form-grid-2col" style="margin-bottom: 0;">
+              <div class="input-group">
+                <label class="input-label">Expiry (MM/YY)</label>
+                <input type="text" id="card-exp-input" class="input-field" placeholder="MM/YY" maxlength="5">
+              </div>
+              <div class="input-group">
+                <label class="input-label">CVV</label>
+                <input type="password" class="input-field" placeholder="•••" maxlength="4" value="789">
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- 3. DEBIT CARD TAB CONTENT -->
+        <div class="payment-tab-content" id="tab-debit">
+          <h3 style="font-family: var(--font-serif); font-size: 1.1rem; color: var(--gold-200); margin-bottom: 1rem;">
+            Debit Card (RuPay, Visa, MasterCard)
+          </h3>
+          <div class="input-group">
+            <label class="input-label">Debit Card Number</label>
+            <input type="text" class="input-field" placeholder="Enter 16-digit debit card number" value="5312 8945 6721 9084">
+          </div>
+          <div class="form-grid-2col">
+            <div class="input-group">
+              <label class="input-label">Valid Thru (MM/YY)</label>
+              <input type="text" class="input-field" placeholder="08/29" value="08/29">
+            </div>
+            <div class="input-group">
+              <label class="input-label">CVV / CVV2</label>
+              <input type="password" class="input-field" placeholder="•••" value="321">
+            </div>
+          </div>
+        </div>
+
+        <!-- 4. NET BANKING TAB CONTENT -->
+        <div class="payment-tab-content" id="tab-netbanking">
+          <h3 style="font-family: var(--font-serif); font-size: 1.1rem; color: var(--gold-200); margin-bottom: 1rem;">
+            Select Sovereign Bank
+          </h3>
+          <div class="banks-grid">
+            <div class="bank-option-btn selected">HDFC Bank</div>
+            <div class="bank-option-btn">ICICI Bank</div>
+            <div class="bank-option-btn">State Bank of India</div>
+            <div class="bank-option-btn">Axis Bank</div>
+            <div class="bank-option-btn">Kotak Mahindra</div>
+            <div class="bank-option-btn">Standard Chartered</div>
+          </div>
+        </div>
+
+        <!-- 5. CASH ON DELIVERY TAB CONTENT -->
+        <div class="payment-tab-content" id="tab-cod">
+          <div style="display: flex; align-items: center; gap: 16px; background: rgba(212,175,55,0.1); border: 1px solid var(--border-gold); padding: 1.5rem; border-radius: var(--radius-md);">
+            <span style="font-size: 2.5rem;">💵</span>
+            <div>
+              <h4 style="font-family: var(--font-serif); font-size: 1.1rem; color: #fff; margin-bottom: 4px;">Pay Upon Arrival</h4>
+              <p style="font-size: 0.86rem; color: var(--text-secondary); line-height: 1.5;">
+                You may settle your bill with cash, card, or UPI directly with our Royal Delivery Valet when your feast arrives.
+              </p>
+            </div>
+          </div>
+        </div>
+
+        <!-- Security Trust Box -->
+        <div class="security-trust-box">
+          <span>🔒 256-Bit SSL Encryption</span> &bull;
+          <span>🛡️ PCI-DSS Level 1 Compliant</span> &bull;
+          <span>⚜️ Royal Heritage Guarantee</span>
+        </div>
+
+      </div>
+
+      <!-- RIGHT COLUMN: Order Summary & Place Order CTA -->
+      <aside class="cart-summary-card">
+        <h3 class="summary-card-title">Billing Summary</h3>
+
+        <!-- Destination Address preview -->
+        <div style="background: rgba(12,12,16,0.8); border: 1px solid var(--border-gold); border-radius: var(--radius-sm); padding: 12px; margin-bottom: 1.4rem;">
+          <div style="font-size: 0.78rem; text-transform: uppercase; color: var(--gold-400); font-weight: 700; margin-bottom: 4px;">Delivering To</div>
+          <div id="pay-address-preview" style="font-size: 0.85rem; color: var(--text-secondary); line-height: 1.4;">
+            Loading address...
+          </div>
+        </div>
+
+        <div class="summary-line-item">
+          <span>Delicacies</span>
+          <span id="pay-items-count">0 Dishes</span>
+        </div>
+
+        <div class="summary-line-item">
+          <span>Subtotal</span>
+          <span id="pay-subtotal">₹0</span>
+        </div>
+
+        <div class="summary-line-item">
+          <span>Royal Delivery</span>
+          <span id="pay-delivery" style="color: var(--gold-300); font-weight: 600;">₹40</span>
+        </div>
+
+        <div class="summary-line-item">
+          <span>Restaurant GST (5%)</span>
+          <span id="pay-tax">₹0</span>
+        </div>
+
+        <div class="summary-line-item discount">
+          <span>Royalty Discount</span>
+          <span id="pay-discount">-₹0</span>
+        </div>
+
+        <div class="summary-total-item">
+          <span>Total Payable</span>
+          <span class="summary-grand-total" id="pay-total">₹0</span>
+        </div>
+
+        <!-- Authorize & Pay CTA -->
+        <button type="button" class="btn btn-primary checkout-proceed-btn" id="authorize-pay-btn" onclick="processPayment()">
+          <span id="pay-button-text">Pay & Place Order ➔</span>
+        </button>
+      </aside>
+
+    </div>
+  </main>
+
+  <!-- ========================================================================
+       4. ORDER PLACED CELEBRATION MODAL (Requirement 6)
+       ======================================================================== -->
+  <div class="order-modal-overlay" id="order-success-modal-overlay">
+    <div class="order-success-modal">
+      <div class="success-crest-icon">🎉</div>
+      <h2 class="success-modal-title">
+        <span class="gold-text-glow">Order Placed Successfully!</span>
+      </h2>
+      <p style="color: var(--text-secondary); font-size: 0.92rem; margin-bottom: 1.2rem;">
+        Your royal banquet order has been confirmed and forwarded to the Executive Chef.
+      </p>
+
+      <!-- Order Details Receipt Box -->
+      <div class="success-details-card">
+        <div class="success-detail-row">
+          <span class="success-detail-label">Order ID:</span>
+          <span class="success-detail-value" id="success-order-id" style="color: var(--gold-300);">#RF-2026-89412</span>
+        </div>
+        <div class="success-detail-row">
+          <span class="success-detail-label">Placed On:</span>
+          <span class="success-detail-value" id="success-order-date">Just Now</span>
+        </div>
+        <div class="success-detail-row">
+          <span class="success-detail-label">Total Amount:</span>
+          <span class="success-detail-value" id="success-order-amount" style="color: var(--gold-200); font-size: 1.05rem;">₹840</span>
+        </div>
+        <div class="success-detail-row">
+          <span class="success-detail-label">Payment Method:</span>
+          <span class="success-detail-value" id="success-payment-method">UPI (Paid)</span>
+        </div>
+        <div class="success-detail-row">
+          <span class="success-detail-label">Estimated Delivery:</span>
+          <span class="success-detail-value" id="success-estimated-time">30-40 mins</span>
+        </div>
+        <div class="success-detail-row">
+          <span class="success-detail-label">Delivery Destination:</span>
+          <span class="success-detail-value" id="success-address">Lutyens Royal Enclave</span>
+        </div>
+      </div>
+
+      <div style="display: flex; gap: 12px; justify-content: center; flex-wrap: wrap;">
+        <a href="menu.html" class="btn btn-outline" style="padding: 0.8rem 1.4rem;">
+          Order More Dishes
+        </a>
+        <button type="button" class="btn btn-primary" id="success-view-order-btn" style="padding: 0.8rem 1.8rem;">
+          Track Order Status ➔
+        </button>
+      </div>
+    </div>
+  </div>
+
+  <!-- ========================================================================
+       5. LUXURY FOOTER
+       ======================================================================== -->
+  <footer class="footer">
+    <div class="footer-grid">
+      <div>
+        <div style="display: flex; align-items: center; gap: 10px; margin-bottom: 12px;">
+          <span style="font-size: 1.8rem; color: var(--gold-300);">⚜️</span>
+          <h3 class="footer-brand-title"><span class="gold-text">ROYAL FLAME</span></h3>
+        </div>
+        <p class="footer-desc">
+          An opulent epicurean sanctuary celebrating royal feasts and modern culinary mastery.
+        </p>
+      </div>
+      <div>
+        <h4 class="footer-col-title">Navigation</h4>
+        <ul class="footer-links">
+          <li><a href="home.html" class="footer-link">Home</a></li>
+          <li><a href="menu.html" class="footer-link">Menu Book</a></li>
+          <li><a href="orders.html" class="footer-link">My Orders</a></li>
+        </ul>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      <div>&copy; 2026 Royal Flame Luxury Restaurant & Gourmet Group. All Rights Reserved.</div>
+    </div>
+  </footer>
+
+  <!-- JavaScript -->
+  <script src="js/payment.js"></script>
+</body>
+</html>

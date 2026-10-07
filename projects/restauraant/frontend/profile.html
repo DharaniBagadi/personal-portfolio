@@ -1,0 +1,220 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Patron Profile & Sanctuary | Royal Flame Luxury Dining</title>
+  <meta name="description" content="View and manage your Royal Flame dining account, delivery addresses, and banquet order records.">
+  
+  <!-- Fonts & Icons -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;600;700;800&family=Outfit:wght@300;400;500;600;700&family=Playfair+Display:ital,wght@0,600;0,700;1,400&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+  
+  <!-- Stylesheets -->
+  <link rel="stylesheet" href="/css/style.css">
+  <link rel="stylesheet" href="/css/profile.css">
+</head>
+<body>
+
+  <!-- Luxury Navbar -->
+  <nav class="navbar" id="navbar">
+    <div class="nav-container">
+      <a href="/home.html" class="nav-brand">
+        <span class="brand-emblem">⚜️</span>
+        <div class="brand-titles">
+          <span class="brand-name">Royal Flame</span>
+          <span class="brand-tagline">Fine Dining & Banquets</span>
+        </div>
+      </a>
+
+      <div class="nav-links">
+        <a href="/home.html" class="nav-link"><i class="fas fa-home"></i> Home</a>
+        <a href="/menu.html" class="nav-link"><i class="fas fa-book-open"></i> Menu Book</a>
+        <a href="/orders.html" class="nav-link"><i class="fas fa-receipt"></i> My Orders</a>
+        <a href="/wishlist.html" class="nav-link"><i class="fas fa-heart"></i> Wishlist</a>
+        <a href="/cart.html" class="nav-link"><i class="fas fa-shopping-bag"></i> Cart</a>
+        <a href="/messages.html" class="nav-link"><i class="fas fa-bell"></i> Alerts</a>
+        <a href="/profile.html" class="nav-link active"><i class="fas fa-user"></i> Profile</a>
+        <a href="/admin/dashboard.html" class="nav-link" id="adminSuiteLink" style="display:none; color:var(--gold); border:1px solid var(--gold); border-radius:20px; padding:4px 12px;">
+          <i class="fas fa-crown"></i> Admin Suite
+        </a>
+      </div>
+
+      <div class="nav-actions">
+        <button class="btn-outline-gold" onclick="localStorage.clear(); window.location.href='/login.html';">
+          <i class="fas fa-sign-out-alt"></i> Logout
+        </button>
+      </div>
+    </div>
+  </nav>
+
+  <!-- Profile View Container -->
+  <div class="profile-container">
+    
+    <!-- Profile Header Card -->
+    <div class="profile-header-card">
+      <div class="profile-user-summary">
+        <div class="profile-avatar-large" id="profileAvatarInitials">RF</div>
+        <div class="profile-meta">
+          <h2><span id="profileFullName">Distinguished Patron</span> <span class="badge badge-admin" id="profileRoleBadge" style="font-size:0.75rem; vertical-align:middle;">Patron</span></h2>
+          <p><i class="fas fa-envelope"></i> <span id="profileEmail">guest@royalflame.com</span></p>
+          <p><i class="fas fa-phone"></i> <span id="profilePhone">+91 98765 43210</span></p>
+        </div>
+      </div>
+
+      <div class="profile-quick-stats">
+        <div class="stat-box">
+          <div class="stat-num" id="profileTotalOrders">0</div>
+          <div class="stat-label">Total Banquets</div>
+        </div>
+        <div class="stat-box">
+          <div class="stat-num" id="profileTotalSpent">₹0</div>
+          <div class="stat-label">Total Spent</div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Profile Grid -->
+    <div class="profile-grid">
+      <!-- Sidebar Menu -->
+      <div class="profile-sidebar-menu">
+        <a href="/profile.html" class="profile-menu-item active">
+          <i class="fas fa-id-card"></i> Personal Profile
+        </a>
+        <a href="/orders.html" class="profile-menu-item">
+          <i class="fas fa-receipt"></i> Banquet Orders
+        </a>
+        <a href="/wishlist.html" class="profile-menu-item">
+          <i class="fas fa-heart"></i> Saved Favorites
+        </a>
+        <a href="/messages.html" class="profile-menu-item">
+          <i class="fas fa-bell"></i> Messages & Alerts
+        </a>
+        <a href="/cart.html" class="profile-menu-item">
+          <i class="fas fa-shopping-bag"></i> Current Cart
+        </a>
+      </div>
+
+      <!-- Main Profile Panels -->
+      <div class="profile-main-panel">
+        
+        <!-- Saved Addresses Panel -->
+        <div class="panel-card">
+          <div class="panel-card-header">
+            <h3><i class="fas fa-map-marked-alt"></i> Royal Residences & Delivery Destinations</h3>
+            <button class="btn-admin-gold" onclick="openAddAddressModal()" style="font-size:0.8rem; padding:6px 14px;">
+              <i class="fas fa-plus"></i> Add Address
+            </button>
+          </div>
+          <div class="addresses-grid" id="profileAddressesContainer">
+            <!-- Injected via JavaScript -->
+          </div>
+        </div>
+
+        <!-- Edit Profile Panel -->
+        <div class="panel-card">
+          <div class="panel-card-header">
+            <h3><i class="fas fa-user-edit"></i> Update Account Details</h3>
+          </div>
+          <form id="profileEditForm" onsubmit="handleProfileUpdate(event)">
+            <div style="display:grid; grid-template-columns:1fr 1fr; gap:16px; margin-bottom:16px;">
+              <div class="form-group">
+                <label>Full Name</label>
+                <input type="text" class="form-control" id="editNameInput" required>
+              </div>
+              <div class="form-group">
+                <label>Phone Number</label>
+                <input type="tel" class="form-control" id="editPhoneInput" required>
+              </div>
+            </div>
+            <div class="form-group" style="margin-bottom:20px;">
+              <label>Email Address (Immutable)</label>
+              <input type="email" class="form-control" id="editEmailInput" disabled style="opacity:0.6;">
+            </div>
+            <button type="submit" class="btn-admin-gold">
+              <i class="fas fa-save"></i> Save Profile Changes
+            </button>
+          </form>
+        </div>
+
+      </div>
+    </div>
+
+  </div>
+
+  <!-- Add Address Modal -->
+  <div class="admin-modal-backdrop" id="addressModalBackdrop">
+    <div class="admin-modal">
+      <div class="modal-header">
+        <h3>✨ Add Delivery Residence</h3>
+        <button class="modal-close-btn" onclick="closeAddAddressModal()">&times;</button>
+      </div>
+      <form id="addressForm" onsubmit="handleSaveNewAddress(event)">
+        <div class="modal-body">
+          <div class="form-grid-2">
+            <div class="form-group">
+              <label>Recipient Name *</label>
+              <input type="text" class="form-control" id="addrFullName" placeholder="Lord Arthur" required>
+            </div>
+            <div class="form-group">
+              <label>Contact Phone *</label>
+              <input type="tel" class="form-control" id="addrPhone" placeholder="+91 98765 43210" required>
+            </div>
+          </div>
+          <div class="form-grid-2">
+            <div class="form-group">
+              <label>House / Villa No *</label>
+              <input type="text" class="form-control" id="addrHouse" placeholder="Villa 14" required>
+            </div>
+            <div class="form-group">
+              <label>Street / Avenue *</label>
+              <input type="text" class="form-control" id="addrStreet" placeholder="Palace Gardens" required>
+            </div>
+          </div>
+          <div class="form-grid-2">
+            <div class="form-group">
+              <label>Area / Enclave *</label>
+              <input type="text" class="form-control" id="addrArea" placeholder="Lutyens Enclave" required>
+            </div>
+            <div class="form-group">
+              <label>City *</label>
+              <input type="text" class="form-control" id="addrCity" placeholder="New Delhi" required>
+            </div>
+          </div>
+          <div class="form-grid-2">
+            <div class="form-group">
+              <label>State *</label>
+              <input type="text" class="form-control" id="addrState" placeholder="Delhi" required>
+            </div>
+            <div class="form-group">
+              <label>Pincode *</label>
+              <input type="text" class="form-control" id="addrPincode" placeholder="110001" required>
+            </div>
+          </div>
+          <div class="form-group">
+            <label>Landmark (Optional)</label>
+            <input type="text" class="form-control" id="addrLandmark" placeholder="Near Gold Gate">
+          </div>
+          <div style="display:flex; align-items:center; gap:8px; margin-top:8px;">
+            <input type="checkbox" id="addrIsDefault">
+            <label for="addrIsDefault" style="color:#fff; font-size:0.85rem; cursor:pointer;">Set as Primary Default Delivery Address</label>
+          </div>
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn-admin-outline" onclick="closeAddAddressModal()">Cancel</button>
+          <button type="submit" class="btn-admin-gold">Save Address</button>
+        </div>
+      </form>
+    </div>
+  </div>
+
+  <script src="/js/profile.js"></script>
+  <script>
+    document.addEventListener('DOMContentLoaded', () => {
+      initProfilePage();
+    });
+  </script>
+</body>
+</html>

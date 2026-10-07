@@ -1,0 +1,256 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <title>Lunch Recipes</title>
+    <link rel="stylesheet" href="style2.css" />
+    <style>
+      #top-title {
+        text-align: center;
+        font-size: 40px;
+        color: #2d2d2d;
+        margin-top: 30px;
+        margin-bottom: 30px;
+      }
+      #top-desc {
+        text-align: center;
+        font-size: 20px;
+        color: #555;
+        margin-bottom: 30px;
+      }
+      .btn-container {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 15px;
+        justify-content: center;
+        margin-top: 20px;
+      }
+      .recipe-btn {
+        padding: 12px 20px;
+        background: #b56576;
+        color: white;
+        border: none;
+        border-radius: 8px;
+        cursor: pointer;
+        font-size: 16px;
+        transition: 0.3s;
+      }
+      .recipe-btn:hover {
+        background: #ff6f61;
+      }
+      .recipe-box {
+        margin-top: 30px;
+        padding: 20px;
+        background: #efbfbb;
+        border-radius: 12px;
+        box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+        display: none;
+        text-align: center;
+        font-size: 25px;
+      }
+      .recipe-box ul,
+      .recipe-box ol {
+        text-align: left;
+        padding-left: 25px;
+        max-width: 500px;
+        margin: 10px auto;
+      }
+    </style>
+  </head>
+  <body>
+    <h1 id="top-title">Top Recommended Lunches</h1>
+    <p id="top-desc">Here are the top 10 lunch items:</p>
+    <div class="btn-container">
+      <button class="recipe-btn" onclick="showRecipe('biryani')">
+        Biryani
+      </button>
+      <button class="recipe-btn" onclick="showRecipe('friedrice')">
+        Fried Rice
+      </button>
+      <button class="recipe-btn" onclick="showRecipe('dal')">Dal Tadka</button>
+      <button class="recipe-btn" onclick="showRecipe('paneer')">
+        Paneer Butter Masala
+      </button>
+      <button class="recipe-btn" onclick="showRecipe('chole')">Chole</button>
+      <button class="recipe-btn" onclick="showRecipe('rajma')">Rajma</button>
+      <button class="recipe-btn" onclick="showRecipe('roti')">Roti</button>
+      <button class="recipe-btn" onclick="showRecipe('curdrice')">
+        Curd Rice
+      </button>
+      <button class="recipe-btn" onclick="showRecipe('vegcurry')">
+        Mixed Veg Curry
+      </button>
+      <button class="recipe-btn" onclick="showRecipe('fishcurry')">
+        Fish Curry
+      </button>
+    </div>
+
+    <div id="recipe-box" class="recipe-box"></div>
+
+    <script>
+      function showRecipe(item) {
+        const recipes = {
+          biryani: {
+            ingredients: [
+              "2 cups basmati rice",
+              "500g chicken/mutton",
+              "Onions, tomatoes",
+              "Spices: garam masala, chili, turmeric",
+              "Curd, mint, coriander",
+            ],
+            steps: [
+              "Soak rice for 30 minutes.",
+              "Cook meat with spices, onions, tomatoes.",
+              "Layer rice and meat with herbs.",
+              "Steam on low heat until rice is fluffy.",
+              "Serve hot with raita.",
+            ],
+          },
+          friedrice: {
+            ingredients: [
+              "2 cups cooked rice",
+              "Mixed vegetables",
+              "Soy sauce",
+              "Spring onions",
+              "Oil",
+            ],
+            steps: [
+              "Heat oil in wok.",
+              "Add vegetables and stir fry.",
+              "Add cooked rice and soy sauce.",
+              "Mix well and fry for 5 minutes.",
+              "Serve hot.",
+            ],
+          },
+          dal: {
+            ingredients: [
+              "1 cup toor dal",
+              "Onion, tomato",
+              "Garlic, ginger",
+              "Spices: turmeric, chili, cumin",
+            ],
+            steps: [
+              "Pressure cook dal with turmeric.",
+              "Prepare tadka with onion, tomato, garlic.",
+              "Add tadka to dal.",
+              "Simmer for 5 minutes.",
+              "Serve with rice or roti.",
+            ],
+          },
+          paneer: {
+            ingredients: [
+              "200g paneer cubes",
+              "Onion, tomato puree",
+              "Butter, cream",
+              "Spices: garam masala, chili",
+            ],
+            steps: [
+              "Heat butter, sauté onion and tomato puree.",
+              "Add spices and cook.",
+              "Add paneer cubes and cream.",
+              "Simmer for 5 minutes.",
+              "Serve with naan or rice.",
+            ],
+          },
+          chole: {
+            ingredients: [
+              "2 cups chickpeas (soaked)",
+              "Onion, tomato",
+              "Spices: chole masala, chili, turmeric",
+            ],
+            steps: [
+              "Pressure cook chickpeas.",
+              "Prepare masala with onion, tomato, spices.",
+              "Add chickpeas and simmer.",
+              "Cook until thick gravy forms.",
+              "Serve with bhature or rice.",
+            ],
+          },
+          rajma: {
+            ingredients: [
+              "2 cups kidney beans (soaked)",
+              "Onion, tomato",
+              "Spices: garam masala, chili, turmeric",
+            ],
+            steps: [
+              "Pressure cook rajma until soft.",
+              "Prepare masala with onion, tomato, spices.",
+              "Add rajma and simmer.",
+              "Cook until gravy thickens.",
+              "Serve with rice.",
+            ],
+          },
+          roti: {
+            ingredients: ["2 cups wheat flour", "Water", "Salt"],
+            steps: [
+              "Knead flour with water and salt.",
+              "Roll into flat discs.",
+              "Cook on tawa until golden.",
+              "Serve hot with curry.",
+            ],
+          },
+          curdrice: {
+            ingredients: [
+              "2 cups cooked rice",
+              "1 cup curd",
+              "Green chili, ginger",
+              "Curry leaves, mustard seeds",
+            ],
+            steps: [
+              "Mix rice with curd.",
+              "Prepare tadka with chili, ginger, curry leaves.",
+              "Add tadka to rice.",
+              "Mix well and serve chilled.",
+            ],
+          },
+          vegcurry: {
+            ingredients: [
+              "Mixed vegetables",
+              "Onion, tomato",
+              "Spices: garam masala, chili, turmeric",
+            ],
+            steps: [
+              "Sauté onion and tomato.",
+              "Add spices and cook.",
+              "Add vegetables and water.",
+              "Simmer until vegetables are cooked.",
+              "Serve hot.",
+            ],
+          },
+          fishcurry: {
+            ingredients: [
+              "500g fish pieces",
+              "Onion, tomato",
+              "Tamarind pulp",
+              "Spices: chili, turmeric, coriander",
+            ],
+            steps: [
+              "Marinate fish with turmeric and salt.",
+              "Prepare curry base with onion, tomato, tamarind.",
+              "Add fish pieces and simmer.",
+              "Cook until fish is tender.",
+              "Serve with rice.",
+            ],
+          },
+        };
+
+        const recipe = recipes[item];
+        const box = document.getElementById("recipe-box");
+
+        if (recipe) {
+          box.innerHTML = `
+            <h2>${item.toUpperCase()}</h2>
+            <h3>Ingredients:</h3>
+            <ul>${recipe.ingredients.map((i) => `<li>${i}</li>`).join("")}</ul>
+            <h3>Process:</h3>
+            <ol>${recipe.steps.map((s) => `<li>${s}</li>`).join("")}</ol>
+          `;
+          box.style.display = "block";
+        } else {
+          box.innerHTML = `<p>Recipe not found.</p>`;
+          box.style.display = "block";
+        }
+      }
+    </script>
+  </body>
+</html>

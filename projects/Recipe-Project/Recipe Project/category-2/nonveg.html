@@ -1,0 +1,92 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <title>Lunch Recipes</title>
+    <link rel="stylesheet" href="style2.css" />
+    <style>
+      #mainhead {
+        text-align: center;
+        font-size: 36px;
+        margin-top: 30px;
+        color: #2d2d2d;
+      }
+
+      .item-list {
+        display: flex;
+        flex-wrap: wrap; /* allows multiple rows */
+        gap: 30px; /* spacing between cards */
+        justify-content: center; /* center the row */
+        margin-top: 50px;
+      }
+
+      .item-card {
+        display: flex;
+        flex-direction: column; /* stack image above text */
+        align-items: center;
+        width: 180px; /* fixed card width */
+        text-decoration: none; /* remove underline */
+        color: #2d2d2d;
+      }
+
+      .item-card img {
+        width: 150px; /* smaller thumbnails */
+        height: auto;
+        border-radius: 6px;
+      }
+
+      .item-card h3 {
+        margin-top: 10px;
+        font-size: 20px;
+        text-align: center; /* centers text under image */
+        word-wrap: break-word; /* prevents text overflow */
+        font-weight: 300px;
+      }
+    </style>
+  </head>
+  <body>
+    <h1 id="mainhead">Non-Veg Recipes</h1>
+    <div class="item-list">
+      <a href="chickencurry.html" class="item-card">
+        <img src="chicken curry-images/chickencurry.png" />
+        <h3>Chicken curry </h3>
+      </a>
+      <a href="muttoncurry.html" class="item-card">
+        <img src="muttoncurry-images/muttoncurry.jpeg" alt="mutton curry" />
+        <h3>Mutton curry</h3>
+      </a>
+      <a href="prawncurry.html" class="item-card">
+        <img src="prawncurry-images/prawncurry.jpeg" alt="Prawn curry" />
+        <h3>Prawn curry</h3>
+      </a>
+      <a href="keema.html" class="item-card">
+        <img src="keema-images/keema.jpeg" alt="keema" />
+        <h3>Keema</h3>
+      </a>
+      <a href="lamb.html" class="item-card">
+        <img src="lamb-images/lamb.jpeg" alt="lamb" />
+        <h3>Lamb</h3>
+      </a>
+      <a href="fishfry.html" class="item-card">
+        <img src="fishfry-images/fishfry.jpeg" alt="fish fry" />
+        <h3>Fish fry</h3>
+      </a>
+      <a href="butterchicken.html" class="item-card">
+        <img src="butterchicken-images/butterchicken.jpeg" alt="butter chicken" />
+        <h3>Butter chicken</h3>
+      </a>
+      <a href="lobster.html" class="item-card">
+        <img src="lobster-images/lobster.jpeg" alt="lobster" />
+        <h3>Lobster</h3>
+      </a>
+      <a href="eggcurry.html" class="item-card">
+        <img src="eggcurry-images/eggcurry.jpeg" alt="egg curry" />
+        <h3>Egg curry</h3>
+      </a>
+      <a href="crabcurry.html" class="item-card">
+        <img src="crabcurry-images/crabcurry.jpeg" alt="curd rice" />
+        <h3>Crab</h3>
+      </a>
+    </div>
+  </body>
+</html>

@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Recipe UI</title>
+  <link rel="stylesheet" href="main.css"/>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/7.0.1/css/all.min.css"/>
+</head>
+<body>
+
+  <div class="navbar">
+    
+    <div class="nav-left">
+        <a href="about.html" id="abt">About</a>
+        <a href="category.html" id="category">Category</a>
+    </div>
+    
+
+  </div>
+
+ 
+  <div class="container">
+    <div class="search-bar">
+      <input type="text" placeholder="Search your recipe" id="search"/>
+      <button  onclick="getcall();" id="but">
+        <i class="fa-solid fa-magnifying-glass"></i>
+      </button>
+    </div>
+  </div>
+  <div id="foot"><div id="ingredients"></div> </div>
+  <script src="main.js"></script>
+  <script>
+
+    document.getElementById("but").addEventListener("click", searchRecipe);
+
+    function searchRecipe() {
+
+      let recipe = document.getElementById("search").value.toLowerCase().trim();
+
+      // Recipe pages
+      let recipes = {
+
+        "dosa": "category-2/dosa.html",
+        "poha": "category-2/poha.html",
+        "upma": "category-2/upma.html",
+        "vada": "category-2/vada.html",
+        "idli": "category-2/idli.html",
+        "Sambar": "category-2/Sambar.html",
+        "cabbage": "category-2/cabbage.html",
+        "bhendi": "category-2/bhendi.html",
+        "lemon rice": "category-2/lemon.html",
+        "baby corn": "category-2/babycorn.html",
+        "chickencurry": "category-2/chickencurry.html",
+        "muttoncurry": "category-2/muttoncurry.html",
+        "prawncurry": "category-2/prawncurry.html",
+        "keema": "category-2/keema.html",
+        "lamb": "category-2/lamb.html",
+        "fishfry": "category-2/fishfry.html",
+        "butterchicken": "category-2/butterchicken.html",
+        "lobster": "category-2/lobster.html",
+        "eggcurry": "category-2/eggcurry.html",
+        "crabcurry": "category-2/crabcurry.html",
+        "gulabjamun": "category-2/gulabjamun.html",
+        "Rasmalai": "category-2/RasmalaiRecipe.html",
+        "jalebi": "category-2/jalebi.html",
+        "kheer": "category-2/kheer.html",
+        "laddu": "category-2/laddu.html",
+        "barfi": "category-2/barfi.html",
+        "halwa": "category-2/halwa.html",
+        "rasgulla": "category-2/rasgulla.html",
+        "malpuri": "category-2/malpuri.html",
+        "payasam": "category-2/payasam.html",
+        "Pulao": "category-2/Pulao.html",
+        "KadaiMushroom": "category-2/KadaiMushroom.html",
+        "Dum Biryani": "category-2/DumBiryani.html",
+        "manchuria": "category-2/Manchuria.html",
+        "sabudana": "category-2/Sabudana.html",
+        "poori": "category-2/Poori.html",
+        "methiparatha": "category-2/MethiParatha.html",
+        "paneerparatha": "category-2/PaneerParatha.html",
+        "biryani": "biryani.html",
+        "cake": "cake.html",
+        "pizza": "pizza.html",
+        "burger": "burger.html"
+
+      };
+
+      // Check recipe exists
+      if(recipes[recipe]) {
+
+        window.location.href = recipes[recipe];
+
+      } else {
+
+        alert("Sorry! Recipe not found");
+
+      }
+    }
+
+  </script>
+
+
+</body>
+</html>

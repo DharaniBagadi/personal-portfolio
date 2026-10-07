@@ -1,0 +1,465 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>ROYAL FLAME | Luxury Fine Dining & Gourmet Menu</title>
+  <meta name="description" content="Welcome to Royal Flame - Award-winning fine dining restaurant. Explore our royal menu, signature Biryanis, artisanal Italian pasta, chef specials, and exquisite desserts.">
+
+  <!-- CSS Stylesheets -->
+  <link rel="stylesheet" href="css/style.css">
+  <link rel="stylesheet" href="css/home.css">
+</head>
+<body>
+
+  <!-- Toast Notification Container -->
+  <div id="toast-container"></div>
+
+  <!-- ========================================================================
+       1. STICKY LUXURY NAVIGATION BAR
+       ======================================================================== -->
+  <header class="navbar-sticky">
+    <div class="nav-container">
+      
+      <!-- Left: Logo, Name & Menu Book -->
+      <div style="display: flex; align-items: center; gap: 12px;">
+        <a href="home.html" class="nav-brand">
+          <div class="brand-crest">⚜️</div>
+          <div class="brand-info">
+            <span class="brand-title"><span class="gold-text">ROYAL FLAME</span></span>
+            <span class="brand-tag">Fine Dining &bull; <a href="menu.html" class="menu-book-badge" style="color: var(--gold-300); text-decoration: underline;">Menu Book</a></span>
+          </div>
+        </a>
+      </div>
+
+      <!-- Center: Large Interactive Search Bar -->
+      <div class="nav-search-wrapper">
+        <div class="nav-search-box">
+          <span class="search-icon">🔍</span>
+          <input 
+            type="text" 
+            id="nav-search-input" 
+            class="nav-search-input" 
+            placeholder="Search for dishes, cuisines, ingredients (e.g., biryani, truffle)..."
+            autocomplete="off"
+          >
+          <button type="button" id="search-clear-btn" class="search-clear-btn" title="Clear Search">✕</button>
+        </div>
+      </div>
+
+      <!-- Right: Action Icons & Profile -->
+      <div class="nav-actions">
+        
+        <!-- Menu Book Link -->
+        <a href="menu.html" class="nav-action-item" title="Open Menu Book" style="color: var(--gold-300);">
+          <div class="action-icon-wrap">
+            <span>📖</span>
+          </div>
+          <span style="font-weight: 700;">Menu Book</span>
+        </a>
+
+        <!-- Wishlist -->
+        <a href="wishlist.html" class="nav-action-item" id="nav-wishlist-btn" title="View Wishlist">
+          <div class="action-icon-wrap">
+            <span>❤️</span>
+            <span class="nav-badge" id="wishlist-count-badge">0</span>
+          </div>
+          <span>Wishlist</span>
+        </a>
+
+        <!-- Cart -->
+        <a href="cart.html" class="nav-action-item" id="nav-cart-btn" title="Dining Cart">
+          <div class="action-icon-wrap">
+            <span>🛒</span>
+            <span class="nav-badge" id="cart-count-badge">0</span>
+          </div>
+          <span>Cart</span>
+        </a>
+
+        <!-- Notifications Dropdown (Requirement 10) -->
+        <div class="notifications-dropdown-wrap">
+          <button type="button" class="nav-action-item" id="notification-trigger" title="Royal Notifications">
+            <div class="action-icon-wrap">
+              <span>🔔</span>
+              <span class="nav-badge" id="notification-badge" style="display: none;">0</span>
+            </div>
+            <span>Alerts</span>
+          </button>
+
+          <div class="notifications-menu" id="notifications-menu">
+            <div class="notifications-header">
+              <span class="notifications-title">👑 Kitchen & Order Alerts</span>
+              <button type="button" class="notifications-mark-read" id="mark-all-read-btn">Mark all read</button>
+            </div>
+            <div class="notifications-list" id="notifications-list">
+              <div class="notifications-empty">Loading royal notifications...</div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Orders -->
+        <a href="orders.html" class="nav-action-item" id="nav-orders-btn" title="My Orders">
+          <div class="action-icon-wrap">
+            <span>📦</span>
+          </div>
+          <span>Orders</span>
+        </a>
+
+        <!-- User Profile Dropdown -->
+        <div class="profile-dropdown-wrap">
+          <div class="profile-trigger" id="profile-trigger" title="User Account Settings">
+            <div class="profile-avatar" id="user-avatar-letter">U</div>
+            <span class="profile-username" id="navbar-username">Guest</span>
+            <span style="font-size: 0.7rem; color: var(--gold-400);">▼</span>
+          </div>
+
+          <!-- Dropdown Menu -->
+          <div class="profile-menu" id="profile-menu">
+            <div class="menu-user-meta">
+              <div class="menu-user-name" id="menu-user-name">Royal Guest</div>
+              <div class="menu-user-email" id="menu-user-email">guest@royalflame.com</div>
+              <span class="menu-user-role" id="menu-user-role">CUSTOMER</span>
+            </div>
+
+            <a href="profile.html" class="profile-menu-item">
+              <span>👤</span> My Profile
+            </a>
+            <a href="orders.html" class="profile-menu-item">
+              <span>📦</span> My Orders
+            </a>
+            <a href="cart.html" class="profile-menu-item">
+              <span>🛒</span> Dining Cart
+            </a>
+            <a href="wishlist.html" class="profile-menu-item">
+              <span>❤️</span> My Wishlist
+            </a>
+            <a href="menu.html" class="profile-menu-item">
+              <span>📖</span> Gourmet Menu Book
+            </a>
+            <a href="admin/dashboard.html" class="profile-menu-item" id="admin-suite-menu-link" style="color: var(--gold-300);">
+              <span>⚜️</span> Executive Admin Suite
+            </a>
+            <div class="profile-menu-item" id="logout-btn" style="color: #f87171; cursor: pointer;">
+              <span>🚪</span> Sign Out
+            </div>
+          </div>
+        </div>
+
+      </div>
+
+      <!-- Mobile Hamburger Button -->
+      <button class="mobile-menu-btn" id="mobile-menu-btn" onclick="window.location.href='cart.html'" title="Cart">
+        🛒
+      </button>
+
+    </div>
+  </header>
+
+  <!-- ========================================================================
+       2. HERO SECTION
+       ======================================================================== -->
+  <section class="hero-section">
+    <div class="hero-particles"></div>
+    <div class="hero-content">
+      <div class="hero-crest-badge">
+        <span>⚜️</span> Michelin Inspired &bull; Royal Heritage Cuisine <span>⚜️</span>
+      </div>
+      
+      <h1 class="hero-title">
+        <span class="gold-text-glow">ROYAL FLAME</span>
+      </h1>
+
+      <p class="hero-tagline">"Where Every Bite Becomes a Memory"</p>
+
+      <p class="hero-description">
+        Indulge in a sensory journey curated by master culinary artists. From slow-simmered royal Biryanis to gold-leaf garnished delicacies, experience opulent dining at your fingertips.
+      </p>
+
+      <div class="hero-actions">
+        <button class="btn btn-primary hero-btn" id="hero-order-now">
+          <span>⚡ Order Now</span>
+        </button>
+        <button class="btn btn-outline hero-btn" id="hero-explore-menu">
+          <span>📖 Explore Menu</span>
+        </button>
+      </div>
+
+      <!-- Quick Stats -->
+      <div class="hero-stats">
+        <div class="stat-item">
+          <span class="stat-value">50+</span>
+          <span class="stat-label">Master Chefs</span>
+        </div>
+        <div style="width: 1px; height: 30px; background: rgba(212, 175, 55, 0.3);"></div>
+        <div class="stat-item">
+          <span class="stat-value">4.95 ⭐</span>
+          <span class="stat-label">Michelin Rating</span>
+        </div>
+        <div style="width: 1px; height: 30px; background: rgba(212, 175, 55, 0.3);"></div>
+        <div class="stat-item">
+          <span class="stat-value">100k+</span>
+          <span class="stat-label">Delighted Diners</span>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ========================================================================
+       3. CATEGORY SELECTOR SECTION
+       ======================================================================== -->
+  <section class="category-section section-wrapper" id="category-section">
+    <div class="section-header" style="margin-bottom: 1.5rem;">
+      <span class="section-pretitle">Curated Gastronomy</span>
+      <h2 class="section-title">Explore by <span class="gold-text">Cuisine & Category</span></h2>
+    </div>
+
+    <!-- Category Pill Scroll Carousel -->
+    <div class="category-scroll-container">
+      <button type="button" class="category-pill active" data-category="All">
+        <span>🍽️</span> All Delicacies
+      </button>
+      <button type="button" class="category-pill" data-category="Starters">
+        <span>🍢</span> Starters
+      </button>
+      <button type="button" class="category-pill" data-category="Main Course">
+        <span>🍲</span> Main Course
+      </button>
+      <button type="button" class="category-pill" data-category="Biryani">
+        <span>🍚</span> Royal Biryani
+      </button>
+      <button type="button" class="category-pill" data-category="Indian">
+        <span>🥘</span> Indian Curries
+      </button>
+      <button type="button" class="category-pill" data-category="Chinese">
+        <span>🥢</span> Chinese & Wok
+      </button>
+      <button type="button" class="category-pill" data-category="Italian">
+        <span>🍝</span> Italian & Pasta
+      </button>
+      <button type="button" class="category-pill" data-category="Burgers">
+        <span>🍔</span> Gourmet Burgers
+      </button>
+      <button type="button" class="category-pill" data-category="Pizza">
+        <span>🍕</span> Artisan Pizza
+      </button>
+      <button type="button" class="category-pill" data-category="Desserts">
+        <span>🍰</span> Royal Desserts
+      </button>
+      <button type="button" class="category-pill" data-category="Beverages">
+        <span>🍸</span> Mocktails & Brews
+      </button>
+      <button type="button" class="category-pill" data-category="Vegetarian">
+        <span class="veg-indicator"></span> Pure Veg
+      </button>
+      <button type="button" class="category-pill" data-category="Non-Vegetarian">
+        <span class="non-veg-indicator"></span> Non-Veg
+      </button>
+    </div>
+  </section>
+
+  <!-- ========================================================================
+       4. CHEF'S SPECIAL / TOP RATED DISHES GRID
+       ======================================================================== -->
+  <section class="section-wrapper" id="chefs-special-section">
+    <div class="section-header">
+      <span class="section-pretitle">Masterpiece Selections</span>
+      <h2 class="section-title" id="chefs-special-title">Chef's Special & <span class="gold-text">Top Rated Dishes</span></h2>
+      <p class="section-subtitle">Crafted with rarest ingredients, 24k gold leaf, and centuries of culinary wisdom</p>
+      <div class="luxury-divider"><span class="luxury-divider-icon">⚜️</span></div>
+    </div>
+
+    <div class="dishes-grid" id="chefs-special-grid">
+      <!-- Dynamically populated via home.js -->
+    </div>
+  </section>
+
+  <!-- ========================================================================
+       5. FLIPKART-STYLE FOOD SECTIONS (HORIZONTAL CAROUSELS)
+       ======================================================================== -->
+  <div class="section-wrapper" style="padding-top: 1rem;">
+
+    <!-- 5.1 Popular Today -->
+    <section class="horizontal-food-section">
+      <div class="horizontal-section-header">
+        <div class="h-section-title-wrap">
+          <h2 class="h-section-title">🔥 Popular <span class="gold-text">Today</span></h2>
+          <span class="h-section-tagline">Trending across the grand dining hall</span>
+        </div>
+        <div class="h-section-controls">
+          <span class="view-all-link" onclick="filterDishesByCategory('All')">View All ➔</span>
+          <button class="scroll-arrow-btn scroll-prev" title="Scroll Left">◀</button>
+          <button class="scroll-arrow-btn scroll-next" title="Scroll Right">▶</button>
+        </div>
+      </div>
+      <div class="horizontal-scroll-track" id="popular-today-track">
+        <!-- Dynamically populated -->
+      </div>
+    </section>
+
+    <!-- 5.2 Most Ordered -->
+    <section class="horizontal-food-section">
+      <div class="horizontal-section-header">
+        <div class="h-section-title-wrap">
+          <h2 class="h-section-title">👑 Most <span class="gold-text">Ordered</span></h2>
+          <span class="h-section-tagline">The timeless signature recipes requested daily</span>
+        </div>
+        <div class="h-section-controls">
+          <span class="view-all-link" onclick="filterDishesByCategory('All')">View All ➔</span>
+          <button class="scroll-arrow-btn scroll-prev" title="Scroll Left">◀</button>
+          <button class="scroll-arrow-btn scroll-next" title="Scroll Right">▶</button>
+        </div>
+      </div>
+      <div class="horizontal-scroll-track" id="most-ordered-track">
+        <!-- Dynamically populated -->
+      </div>
+    </section>
+
+    <!-- 5.3 Recommended For You -->
+    <section class="horizontal-food-section">
+      <div class="horizontal-section-header">
+        <div class="h-section-title-wrap">
+          <h2 class="h-section-title">✨ Recommended <span class="gold-text">For You</span></h2>
+          <span class="h-section-tagline">Handpicked culinary pairings by our Sommelier</span>
+        </div>
+        <div class="h-section-controls">
+          <span class="view-all-link" onclick="filterDishesByCategory('All')">View All ➔</span>
+          <button class="scroll-arrow-btn scroll-prev" title="Scroll Left">◀</button>
+          <button class="scroll-arrow-btn scroll-next" title="Scroll Right">▶</button>
+        </div>
+      </div>
+      <div class="horizontal-scroll-track" id="recommended-track">
+        <!-- Dynamically populated -->
+      </div>
+    </section>
+
+    <!-- 5.4 New Arrivals -->
+    <section class="horizontal-food-section">
+      <div class="horizontal-section-header">
+        <div class="h-section-title-wrap">
+          <h2 class="h-section-title">🌟 New <span class="gold-text">Arrivals</span></h2>
+          <span class="h-section-tagline">Seasonal innovations fresh from our test kitchen</span>
+        </div>
+        <div class="h-section-controls">
+          <span class="view-all-link" onclick="filterDishesByCategory('All')">View All ➔</span>
+          <button class="scroll-arrow-btn scroll-prev" title="Scroll Left">◀</button>
+          <button class="scroll-arrow-btn scroll-next" title="Scroll Right">▶</button>
+        </div>
+      </div>
+      <div class="horizontal-scroll-track" id="new-arrivals-track">
+        <!-- Dynamically populated -->
+      </div>
+    </section>
+
+  </div>
+
+  <!-- ========================================================================
+       6. SLIDE-IN SHOPPING CART DRAWER
+       ======================================================================== -->
+  <div class="cart-drawer-overlay" id="cart-drawer-overlay"></div>
+  
+  <aside class="cart-drawer" id="cart-drawer">
+    <div class="cart-header">
+      <h3 class="cart-title">🛒 Royal <span class="gold-text">Dining Cart</span></h3>
+      <button class="cart-close-btn" id="cart-close-btn" title="Close Cart">✕</button>
+    </div>
+
+    <!-- Items List Body -->
+    <div class="cart-items-body" id="cart-items-body">
+      <!-- Dynamically generated cart items -->
+    </div>
+
+    <!-- Cart Footer & Checkout Summary -->
+    <div class="cart-footer">
+      <div class="cart-summary-row">
+        <span>Items Subtotal</span>
+        <span id="cart-subtotal">₹0</span>
+      </div>
+      <div class="cart-summary-row">
+        <span>Restaurant Taxes (5% GST)</span>
+        <span id="cart-tax">₹0</span>
+      </div>
+      <div class="cart-summary-row">
+        <span>Royal Delivery / Valet</span>
+        <span style="color: var(--gold-300); font-weight: 600;">COMPLIMENTARY</span>
+      </div>
+      <div class="cart-total-row">
+        <span>Grand Total</span>
+        <span class="gold-text" id="cart-total">₹0</span>
+      </div>
+
+      <button type="button" class="btn btn-primary cart-checkout-btn" id="cart-checkout-btn">
+        <span>Place Royal Order ➔</span>
+      </button>
+    </div>
+  </aside>
+
+  <!-- ========================================================================
+       7. LUXURY FOOTER
+       ======================================================================== -->
+  <footer class="footer">
+    <div class="footer-grid">
+      
+      <!-- Brand column -->
+      <div>
+        <div style="display: flex; align-items: center; gap: 10px; margin-bottom: 12px;">
+          <span style="font-size: 1.8rem; color: var(--gold-300);">⚜️</span>
+          <h3 class="footer-brand-title"><span class="gold-text">ROYAL FLAME</span></h3>
+        </div>
+        <p class="footer-desc">
+          An opulent epicurean sanctuary celebrating the rich heritage of royal feasts and contemporary Michelin-starred culinary artistry.
+        </p>
+        <div style="margin-top: 1.2rem; color: var(--gold-400); font-size: 0.85rem;">
+          📍 The Grand Palace Avenue, Royal District, New Delhi &bull; London &bull; Dubai
+        </div>
+      </div>
+
+      <!-- Quick Navigation -->
+      <div>
+        <h4 class="footer-col-title">Dining Menu</h4>
+        <ul class="footer-links">
+          <li><a href="#chefs-special-section" class="footer-link">Chef's Special</a></li>
+          <li><a href="#category-section" class="footer-link">Royal Biryani Handi</a></li>
+          <li><a href="#category-section" class="footer-link">Artisanal Sourdough Pizza</a></li>
+          <li><a href="#category-section" class="footer-link">Handcrafted Pastas</a></li>
+          <li><a href="#category-section" class="footer-link">Gold Flake Desserts</a></li>
+        </ul>
+      </div>
+
+      <!-- Royal Services -->
+      <div>
+        <h4 class="footer-col-title">Experiences</h4>
+        <ul class="footer-links">
+          <li><a href="#" class="footer-link">Private Dining Suites</a></li>
+          <li><a href="#" class="footer-link">Chef's Table Experience</a></li>
+          <li><a href="#" class="footer-link">Sommelier Cellar Tours</a></li>
+          <li><a href="#" class="footer-link">Bespoke Royal Catering</a></li>
+          <li><a href="#" class="footer-link">Gift Memberships</a></li>
+        </ul>
+      </div>
+
+      <!-- Hours & Newsletter -->
+      <div>
+        <h4 class="footer-col-title">Dining Hours</h4>
+        <p style="font-size: 0.85rem; color: var(--text-secondary); line-height: 1.6; margin-bottom: 1rem;">
+          Lunch: 12:00 PM – 03:30 PM<br>
+          Dinner: 07:00 PM – 12:30 AM<br>
+          Late Night Lounge: Until 02:00 AM
+        </p>
+        <div style="display: flex; gap: 8px;">
+          <input type="email" placeholder="Your royal email" style="background: rgba(255,255,255,0.08); border: 1px solid var(--border-gold); padding: 8px 12px; border-radius: var(--radius-sm); color: #fff; font-size: 0.82rem; flex: 1;">
+          <button type="button" class="btn btn-primary" style="padding: 8px 14px; font-size: 0.8rem;" onclick="showToast('Subscribed', 'You have been enrolled in Royal Flame exclusive culinary invites.', 'success')">Join</button>
+        </div>
+      </div>
+
+    </div>
+
+    <div class="footer-bottom">
+      <div>&copy; 2026 Royal Flame Luxury Restaurant & Gourmet Group. All Rights Reserved.</div>
+      <div>Designed for Supreme Luxury Dining & Food Ordering</div>
+    </div>
+  </footer>
+
+  <!-- JavaScript -->
+  <script src="js/home.js"></script>
+</body>
+</html>

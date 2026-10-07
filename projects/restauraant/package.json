@@ -1,0 +1,35 @@
+{
+  "name": "royal-flame-restaurant",
+  "version": "1.0.0",
+  "description": "Luxury Restaurant Food-Ordering Full-Stack Web Application",
+  "main": "backend/server.js",
+  "type": "commonjs",
+  "scripts": {
+    "start": "node backend/server.js",
+    "dev": "node backend/server.js",
+    "seed": "node backend/seed.js"
+  },
+  "keywords": [
+    "restaurant",
+    "luxury",
+    "food-ordering",
+    "express",
+    "mongodb",
+    "jwt",
+    "bcrypt"
+  ],
+  "author": "Royal Flame Culinary Team",
+  "license": "ISC",
+  "dependencies": {
+    "bcryptjs": "^3.0.3",
+    "cors": "^2.8.5",
+    "dotenv": "^17.3.1",
+    "express": "^5.2.1",
+    "jsonwebtoken": "^9.0.3",
+    "mongoose": "^9.3.0",
+    "nodemailer": "^10.0.15"
+  },
+  "devDependencies": {
+    "mongodb-memory-server": "^10.2.2"
+  }
+}

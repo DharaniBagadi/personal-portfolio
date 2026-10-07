@@ -1,0 +1,291 @@
+/* ==========================================================================
+   ROYAL FLAME - PAYMENT & ORDER CONFIRMATION STYLES (payment.css)
+   ========================================================================== */
+
+.payment-container {
+  max-width: 1360px;
+  margin: 2rem auto 5rem;
+  padding: 0 1.5rem;
+}
+
+.payment-layout-grid {
+  display: grid;
+  grid-template-columns: 1.6fr 1fr;
+  gap: 2.5rem;
+  align-items: start;
+}
+
+/* Payment Methods Main Card */
+.payment-methods-card {
+  background: rgba(18, 18, 26, 0.8);
+  backdrop-filter: blur(20px);
+  border: 1px solid var(--border-gold);
+  border-radius: var(--radius-lg);
+  padding: 2.2rem;
+  box-shadow: var(--shadow-card);
+}
+
+.payment-card-title {
+  font-family: var(--font-serif);
+  font-size: 1.4rem;
+  color: #fff;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.08);
+  padding-bottom: 1.2rem;
+  margin-bottom: 1.8rem;
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+/* Payment Tabs Navigation */
+.payment-tabs-nav {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(130px, 1fr));
+  gap: 10px;
+  margin-bottom: 2rem;
+}
+
+.payment-tab-btn {
+  background: rgba(24, 24, 34, 0.7);
+  border: 1.5px solid rgba(255, 255, 255, 0.08);
+  border-radius: var(--radius-md);
+  padding: 12px 10px;
+  color: var(--text-secondary);
+  font-size: 0.85rem;
+  font-weight: 600;
+  cursor: pointer;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 6px;
+  transition: all var(--transition-fast);
+}
+
+.payment-tab-btn:hover {
+  border-color: var(--border-gold);
+  background: rgba(30, 30, 42, 0.9);
+  color: #fff;
+}
+
+.payment-tab-btn.active {
+  background: rgba(212, 175, 55, 0.15);
+  border-color: var(--gold-400);
+  color: var(--gold-200);
+  box-shadow: 0 4px 15px rgba(212, 175, 55, 0.2);
+}
+
+.payment-tab-icon {
+  font-size: 1.4rem;
+}
+
+/* Tab Content Panels */
+.payment-tab-content {
+  display: none;
+  background: rgba(14, 14, 20, 0.6);
+  border: 1px solid rgba(255, 255, 255, 0.06);
+  border-radius: var(--radius-md);
+  padding: 1.8rem;
+}
+
+.payment-tab-content.active {
+  display: block;
+  animation: fadeIn 0.3s ease;
+}
+
+@keyframes fadeIn {
+  from { opacity: 0; transform: translateY(6px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+/* 1. UPI Payment Panel */
+.upi-app-options {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 12px;
+  margin-bottom: 1.5rem;
+}
+
+.upi-app-card {
+  background: rgba(24, 24, 34, 0.8);
+  border: 1px solid var(--border-gold);
+  border-radius: var(--radius-sm);
+  padding: 12px;
+  text-align: center;
+  cursor: pointer;
+  transition: all var(--transition-fast);
+}
+
+.upi-app-card:hover, .upi-app-card.selected {
+  border-color: var(--gold-300);
+  background: rgba(212, 175, 55, 0.15);
+  transform: translateY(-2px);
+}
+
+/* 2. Interactive Gold Credit Card Simulator */
+.virtual-card-wrap {
+  width: 100%;
+  max-width: 380px;
+  height: 220px;
+  margin: 0 auto 1.8rem;
+  background: linear-gradient(135deg, #2a2517 0%, #171610 50%, #3a3219 100%);
+  border: 1.5px solid var(--gold-400);
+  border-radius: 16px;
+  padding: 1.5rem;
+  box-shadow: 0 15px 35px rgba(0, 0, 0, 0.8), 0 0 20px rgba(212, 175, 55, 0.25);
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  position: relative;
+  overflow: hidden;
+}
+
+.virtual-card-chip {
+  width: 44px;
+  height: 32px;
+  background: linear-gradient(135deg, #d4af37, #f7e089);
+  border-radius: 6px;
+}
+
+.virtual-card-number {
+  font-family: 'Courier New', monospace;
+  font-size: 1.3rem;
+  letter-spacing: 3px;
+  color: var(--gold-200);
+  text-shadow: 0 2px 4px rgba(0, 0, 0, 0.6);
+}
+
+.virtual-card-meta {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-end;
+}
+
+.virtual-card-holder {
+  font-size: 0.85rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 1.5px;
+  color: #fff;
+}
+
+.virtual-card-exp {
+  font-size: 0.82rem;
+  color: var(--gold-300);
+  font-family: monospace;
+}
+
+/* 3. Net Banking Grid */
+.banks-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(140px, 1fr));
+  gap: 12px;
+  margin-bottom: 1.5rem;
+}
+
+.bank-option-btn {
+  background: rgba(24, 24, 34, 0.8);
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  border-radius: var(--radius-sm);
+  padding: 10px;
+  color: #fff;
+  font-size: 0.85rem;
+  font-weight: 600;
+  cursor: pointer;
+  text-align: center;
+  transition: all var(--transition-fast);
+}
+
+.bank-option-btn:hover, .bank-option-btn.selected {
+  border-color: var(--gold-400);
+  background: rgba(212, 175, 55, 0.15);
+}
+
+/* Security Trust Badges */
+.security-trust-box {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 16px;
+  margin-top: 1.5rem;
+  padding-top: 1rem;
+  border-top: 1px solid rgba(255, 255, 255, 0.06);
+  font-size: 0.78rem;
+  color: var(--text-muted);
+}
+
+/* Order Success Modal */
+.order-modal-overlay {
+  position: fixed;
+  inset: 0;
+  background: rgba(0, 0, 0, 0.85);
+  backdrop-filter: blur(12px);
+  z-index: 9999;
+  display: none;
+  align-items: center;
+  justify-content: center;
+  padding: 1.5rem;
+}
+
+.order-modal-overlay.show {
+  display: flex;
+  animation: fadeIn 0.3s ease;
+}
+
+.order-success-modal {
+  background: rgba(20, 20, 28, 0.98);
+  border: 1.5px solid var(--gold-400);
+  border-radius: var(--radius-lg);
+  max-width: 580px;
+  width: 100%;
+  padding: 2.5rem;
+  text-align: center;
+  box-shadow: 0 25px 60px rgba(0, 0, 0, 0.95), 0 0 40px rgba(212, 175, 55, 0.3);
+  position: relative;
+}
+
+.success-crest-icon {
+  font-size: 3.5rem;
+  margin-bottom: 0.5rem;
+}
+
+.success-modal-title {
+  font-family: var(--font-serif);
+  font-size: 1.8rem;
+  color: #fff;
+  margin-bottom: 0.5rem;
+}
+
+.success-details-card {
+  background: rgba(12, 12, 16, 0.8);
+  border: 1px solid var(--border-gold);
+  border-radius: var(--radius-md);
+  padding: 1.2rem;
+  margin: 1.5rem 0;
+  text-align: left;
+}
+
+.success-detail-row {
+  display: flex;
+  justify-content: space-between;
+  margin-bottom: 8px;
+  font-size: 0.88rem;
+}
+
+.success-detail-row:last-child {
+  margin-bottom: 0;
+}
+
+.success-detail-label {
+  color: var(--text-muted);
+}
+
+.success-detail-value {
+  color: #fff;
+  font-weight: 700;
+}
+
+@media (max-width: 992px) {
+  .payment-layout-grid {
+    grid-template-columns: 1fr;
+  }
+}

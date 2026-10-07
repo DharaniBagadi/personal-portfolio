@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Royal Flame | Luxury Restaurant</title>
+  <link rel="stylesheet" href="css/style.css">
+  <style>
+    .loading-screen {
+      height: 100vh;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      gap: 1.5rem;
+      background: radial-gradient(circle at 50% 40%, #1a1a24 0%, #09090c 80%);
+      color: #fff;
+    }
+    .loading-crest {
+      width: 70px;
+      height: 70px;
+      border: 2px solid var(--gold-400);
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 2rem;
+      color: var(--gold-300);
+      animation: spinGlow 2.5s infinite ease-in-out;
+    }
+    @keyframes spinGlow {
+      0%, 100% { transform: scale(1); box-shadow: 0 0 20px rgba(212, 175, 55, 0.3); }
+      50% { transform: scale(1.1); box-shadow: 0 0 40px rgba(212, 175, 55, 0.6); }
+    }
+    .loading-text {
+      font-family: var(--font-serif);
+      letter-spacing: 0.2em;
+      font-size: 1.1rem;
+      text-transform: uppercase;
+      color: var(--gold-200);
+    }
+  </style>
+</head>
+<body>
+  <div class="loading-screen">
+    <div class="loading-crest">⚜️</div>
+    <div class="loading-text">ROYAL FLAME</div>
+    <p style="color: var(--text-muted); font-size: 0.85rem; font-style: italic;">Preparing your culinary experience...</p>
+  </div>
+
+  <script>
+    (async function() {
+      const token = localStorage.getItem('royal_flame_token');
+      if (token) {
+        try {
+          const res = await fetch('/api/auth/me', {
+            headers: { 'Authorization': `Bearer ${token}` }
+          });
+          const data = await res.json();
+          if (data.success) {
+            window.location.replace('home.html');
+            return;
+          }
+        } catch (e) {}
+      }
+      // If no valid session, open login page
+      window.location.replace('login.html');
+    })();
+  </script>
+</body>
+</html>

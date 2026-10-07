@@ -1,0 +1,88 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <title>Breakfast Recipes</title>
+    <link rel="stylesheet" href="style2.css" />
+    <style>
+      #mainhead {
+        text-align: center;
+        font-size: 36px;
+        margin-top: 30px;
+        color: #2d2d2d;
+      }
+
+      .item-list {
+        display: flex;
+        flex-wrap: wrap; /* allows multiple rows */
+        gap: 30px; /* spacing between cards */
+        justify-content: center; /* center the row */
+        margin-top: 50px;
+      }
+
+      .item-card {
+        display: flex;
+        flex-direction: column; /* stack image above text */
+        align-items: center;
+        width: 180px; /* fixed card width */
+        text-decoration: none; /* remove underline */
+        color: #2d2d2d;
+      }
+
+      .item-card img {
+        width: 150px; /* smaller thumbnails */
+        height: auto;
+        border-radius: 6px;
+      }
+
+      .item-card h3 {
+        margin-top: 10px;
+        font-size: 20px;
+        text-align: center; /* centers text under image */
+        word-wrap: break-word; /* prevents text overflow */
+        font-weight: 300px;
+      }
+    </style>
+  </head>
+  <body>
+    <h1 id="mainhead">Breakfast Recipes</h1>
+    <div class="item-list">
+      <a href="idli.html" class="item-card">
+        <img src="idli-images/idli.jpg" alt="Idli" />
+        <h3>Idli Recipe and Batter Tips</h3>
+      </a>
+      <a href="dosa.html" class="item-card">
+        <img src="dosa-images/dosa.jpg" alt="Dosa" />
+        <h3>Masal Dosa Recipe</h3>
+      </a>
+      <a href="poha.html" class="item-card">
+        <img src="poha-images/poha.jpg" alt="Poha" />
+        <h3>Poha</h3>
+      </a>
+      <a href="upma.html" class="item-card">
+        <img src="upma-images/upma.jpg" alt="Upma" />
+        <h3>Upma</h3>
+      </a>
+      <a href="vada.html" class="item-card">
+        <img src="vada-images/vada.jpg" alt="vada" />
+        <h3>vada</h3>
+      </a>
+      <a href="Sabudana.html" class="item-card">
+        <img src="Sabudana-images/Sabudana.jpg" alt="Sabudana" />
+        <h3>Sabudana Khichdi Recipe</h3>
+      </a>
+      <a href="Poori.html" class="item-card">
+        <img src="Poori-images/Puri.jpg" alt="Poori" />
+        <h3>Poori Recipe</h3>
+      </a>
+      <a href="MethiParatha.html" class="item-card">
+        <img src="MethiParatha-images/MethiParatha.jpg" alt="MethiParatha" />
+        <h3>MethiParatha</h3>
+      </a>
+      <a href="PaneerParatha.html" class="item-card">
+        <img src="PaneerParatha-images/PaneerParatha.jpg" alt="PaneerParatha" />
+        <h3>Paneer Paratha</h3>
+      </a>
+    </div>
+  </body>
+</html>

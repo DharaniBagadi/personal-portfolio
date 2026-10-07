@@ -1,0 +1,287 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Checkout | ROYAL FLAME Luxury Dining</title>
+  <meta name="description" content="Select your royal delivery address, review ordered delicacies and prepare for banquet payment.">
+
+  <!-- CSS Stylesheets -->
+  <link rel="stylesheet" href="css/style.css">
+  <link rel="stylesheet" href="css/home.css">
+  <link rel="stylesheet" href="css/checkout.css">
+</head>
+<body>
+
+  <!-- Toast Notification Container -->
+  <div id="toast-container"></div>
+
+  <!-- ========================================================================
+       1. STICKY LUXURY NAVIGATION BAR
+       ======================================================================== -->
+  <header class="navbar-sticky">
+    <div class="nav-container">
+      
+      <!-- Left: Logo & Brand -->
+      <a href="home.html" class="nav-brand">
+        <div class="brand-crest">⚜️</div>
+        <div class="brand-info">
+          <span class="brand-title"><span class="gold-text">ROYAL FLAME</span></span>
+          <span class="brand-tag">Fine Dining &bull; <span style="color: var(--gold-300);">Checkout</span></span>
+        </div>
+      </a>
+
+      <!-- Center: Title -->
+      <div style="font-family: var(--font-serif); font-size: 1.1rem; color: var(--gold-200); font-weight: 700; letter-spacing: 0.05em;">
+        SECURE ROYAL CHECKOUT 🔒
+      </div>
+
+      <!-- Right: Action Icons & Profile -->
+      <div class="nav-actions">
+        <!-- Cart Link -->
+        <a href="cart.html" class="nav-action-item" title="Back to Cart">
+          <div class="action-icon-wrap">
+            <span>🛒</span>
+          </div>
+          <span>Cart</span>
+        </a>
+
+        <!-- User Profile Dropdown -->
+        <div class="profile-dropdown-wrap">
+          <div class="profile-trigger" id="profile-trigger" title="User Account Settings">
+            <div class="profile-avatar" id="user-avatar-letter">U</div>
+            <span class="profile-username" id="navbar-username">Guest</span>
+            <span style="font-size: 0.7rem; color: var(--gold-400);">▼</span>
+          </div>
+
+          <div class="profile-menu" id="profile-menu">
+            <div class="menu-user-meta">
+              <div class="menu-user-name" id="menu-user-name">Royal Guest</div>
+              <div class="menu-user-email" id="menu-user-email">guest@royalflame.com</div>
+              <span class="menu-user-role" id="menu-user-role">CUSTOMER</span>
+            </div>
+            <a href="orders.html" class="profile-menu-item"><span>📦</span> My Orders</a>
+            <a href="cart.html" class="profile-menu-item"><span>🛒</span> Dining Cart</a>
+            <div class="profile-menu-item logout-btn" id="logout-btn"><span>🚪</span> Sign Out</div>
+          </div>
+        </div>
+      </div>
+
+    </div>
+  </header>
+
+  <!-- ========================================================================
+       2. CHECKOUT PROGRESS TRACKER
+       ======================================================================== -->
+  <div class="checkout-progress-bar">
+    <div class="progress-step completed">
+      <div class="step-bubble">✓</div>
+      <span class="step-label">Dining Cart</span>
+    </div>
+    <div class="progress-step active">
+      <div class="step-bubble">2</div>
+      <span class="step-label">Address & Review</span>
+    </div>
+    <div class="progress-step">
+      <div class="step-bubble">3</div>
+      <span class="step-label">Payment</span>
+    </div>
+  </div>
+
+  <!-- ========================================================================
+       3. MAIN CHECKOUT SECTION (Requirements 3, 5)
+       ======================================================================== -->
+  <main class="checkout-container">
+    <div class="checkout-grid">
+      
+      <!-- LEFT COLUMN: Address & Items Review -->
+      <div>
+        
+        <!-- 1. Delivery Address Card -->
+        <section class="checkout-section-card">
+          <div class="checkout-section-header">
+            <h2 class="checkout-section-title">
+              <span>📍</span> Select Delivery Address
+            </h2>
+            <button type="button" class="btn btn-outline" style="padding: 6px 14px; font-size: 0.8rem;" onclick="openAddressForm()">
+              + Add New Address
+            </button>
+          </div>
+
+          <!-- Notice if no address -->
+          <div id="no-address-notice" style="display: none; padding: 1rem; background: rgba(212,175,55,0.1); border: 1px dashed var(--border-gold); border-radius: var(--radius-sm); margin-bottom: 1rem; color: var(--gold-200); font-size: 0.9rem;">
+            ⚠️ You have no saved delivery address. Please fill out the form below to proceed.
+          </div>
+
+          <!-- Saved Addresses Grid -->
+          <div class="address-selection-grid" id="saved-addresses-grid">
+            <!-- Dynamically populated via checkout.js -->
+          </div>
+
+          <!-- Add Address Form (Collapsible/Inline) -->
+          <div class="add-address-form-box" id="add-address-form-box" style="display: none;">
+            <h3 style="font-family: var(--font-serif); font-size: 1.15rem; color: var(--gold-300); margin-bottom: 1.2rem;">
+              🏛️ Add Delivery Address
+            </h3>
+
+            <form id="add-address-form">
+              <div class="form-grid-2col">
+                <div class="input-group">
+                  <label class="input-label">Full Name *</label>
+                  <input type="text" id="addr-name" class="input-field" placeholder="e.g. Lord Arthur Wellesley" required>
+                </div>
+                <div class="input-group">
+                  <label class="input-label">Phone Number *</label>
+                  <input type="tel" id="addr-phone" class="input-field" placeholder="e.g. +91 91234 56789" required>
+                </div>
+              </div>
+
+              <div class="form-grid-2col">
+                <div class="input-group">
+                  <label class="input-label">House / Flat Number *</label>
+                  <input type="text" id="addr-house" class="input-field" placeholder="e.g. Villa 14, Royal Crest Manor" required>
+                </div>
+                <div class="input-group">
+                  <label class="input-label">Street / Boulevard *</label>
+                  <input type="text" id="addr-street" class="input-field" placeholder="e.g. Palace Gardens Road" required>
+                </div>
+              </div>
+
+              <div class="form-grid-3col">
+                <div class="input-group">
+                  <label class="input-label">Area / Locality *</label>
+                  <input type="text" id="addr-area" class="input-field" placeholder="e.g. Lutyens Royal Enclave" required>
+                </div>
+                <div class="input-group">
+                  <label class="input-label">City *</label>
+                  <input type="text" id="addr-city" class="input-field" placeholder="e.g. New Delhi" required>
+                </div>
+                <div class="input-group">
+                  <label class="input-label">State *</label>
+                  <input type="text" id="addr-state" class="input-field" placeholder="e.g. Delhi" required>
+                </div>
+              </div>
+
+              <div class="form-grid-2col">
+                <div class="input-group">
+                  <label class="input-label">Pincode *</label>
+                  <input type="text" id="addr-pincode" class="input-field" placeholder="e.g. 110001" required>
+                </div>
+                <div class="input-group">
+                  <label class="input-label">Landmark (Optional)</label>
+                  <input type="text" id="addr-landmark" class="input-field" placeholder="e.g. Near Embassy Gate">
+                </div>
+              </div>
+
+              <div style="display: flex; align-items: center; gap: 8px; margin-bottom: 1rem;">
+                <input type="checkbox" id="addr-default" style="accent-color: var(--gold-400);">
+                <label for="addr-default" style="font-size: 0.85rem; color: var(--text-secondary); cursor: pointer;">
+                  Set as default delivery address
+                </label>
+              </div>
+
+              <div class="form-actions-row">
+                <button type="button" class="btn btn-secondary" onclick="closeAddressForm()">Cancel</button>
+                <button type="submit" class="btn btn-primary">Save Address</button>
+              </div>
+            </form>
+          </div>
+        </section>
+
+        <!-- 2. Order Items Review -->
+        <section class="checkout-section-card">
+          <div class="checkout-section-header">
+            <h2 class="checkout-section-title">
+              <span>🍽️</span> Order Items Review
+            </h2>
+          </div>
+          <div class="checkout-items-list" id="checkout-items-list">
+            <!-- Dynamically populated via checkout.js -->
+          </div>
+        </section>
+
+      </div>
+
+      <!-- RIGHT COLUMN: Price Details & Continue CTA -->
+      <aside class="cart-summary-card">
+        <h3 class="summary-card-title">Order Price Summary</h3>
+
+        <div class="summary-line-item">
+          <span>Items Subtotal</span>
+          <span id="checkout-subtotal">₹0</span>
+        </div>
+
+        <div class="summary-line-item">
+          <span>Royal Delivery Fee</span>
+          <span id="checkout-delivery" style="color: var(--gold-300); font-weight: 600;">₹40</span>
+        </div>
+
+        <div class="summary-line-item">
+          <span>Restaurant GST (5%)</span>
+          <span id="checkout-tax">₹0</span>
+        </div>
+
+        <div class="summary-line-item discount">
+          <span>Welcome Royalty Discount</span>
+          <span id="checkout-discount">-₹0</span>
+        </div>
+
+        <div class="summary-total-item">
+          <span>Total Payable</span>
+          <span class="summary-grand-total" id="checkout-total">₹0</span>
+        </div>
+
+        <button type="button" class="btn btn-primary checkout-proceed-btn" onclick="continueToPayment()">
+          <span>Continue to Payment ➔</span>
+        </button>
+
+        <div style="text-align: center; margin-top: 1.2rem; font-size: 0.78rem; color: var(--text-muted);">
+          🛡️ Verified Authentic &bull; Michelin Excellence Guaranteed
+        </div>
+      </aside>
+
+    </div>
+  </main>
+
+  <!-- ========================================================================
+       4. LUXURY FOOTER
+       ======================================================================== -->
+  <footer class="footer">
+    <div class="footer-grid">
+      <div>
+        <div style="display: flex; align-items: center; gap: 10px; margin-bottom: 12px;">
+          <span style="font-size: 1.8rem; color: var(--gold-300);">⚜️</span>
+          <h3 class="footer-brand-title"><span class="gold-text">ROYAL FLAME</span></h3>
+        </div>
+        <p class="footer-desc">
+          An opulent epicurean sanctuary celebrating royal heritage feasts and modern culinary mastery.
+        </p>
+      </div>
+
+      <div>
+        <h4 class="footer-col-title">Quick Links</h4>
+        <ul class="footer-links">
+          <li><a href="menu.html" class="footer-link">Menu Book</a></li>
+          <li><a href="cart.html" class="footer-link">Dining Cart</a></li>
+          <li><a href="orders.html" class="footer-link">My Orders</a></li>
+        </ul>
+      </div>
+
+      <div>
+        <h4 class="footer-col-title">Concierge</h4>
+        <p style="font-size: 0.85rem; color: var(--text-secondary); line-height: 1.6;">
+          Private Dining & Valet: +91 98765 43210<br>
+          Assistance: concierge@royalflame.com
+        </p>
+      </div>
+    </div>
+
+    <div class="footer-bottom">
+      <div>&copy; 2026 Royal Flame Luxury Restaurant & Gourmet Group. All Rights Reserved.</div>
+    </div>
+  </footer>
+
+  <!-- JavaScript -->
+  <script src="js/checkout.js"></script>
+</body>
+</html>

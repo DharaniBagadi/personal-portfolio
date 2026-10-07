@@ -1,0 +1,185 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Royal Flame | Luxury Restaurant - Sign In & Registration</title>
+  <meta name="description" content="Experience royal fine dining and gourmet delicacies. Sign in or register to book tables, order chef specials, and enjoy bespoke culinary privileges.">
+  
+  <!-- CSS Stylesheets -->
+  <link rel="stylesheet" href="css/style.css">
+  <link rel="stylesheet" href="css/login.css">
+</head>
+<body class="auth-page">
+  <!-- Atmospheric background layers -->
+  <div class="auth-bg"></div>
+  <div class="auth-ambient-glow"></div>
+
+  <!-- Toast Container -->
+  <div id="toast-container"></div>
+
+  <!-- Main Card Container -->
+  <div class="auth-card-container">
+    <!-- Restaurant Crest & Title -->
+    <div class="auth-header">
+      <div class="auth-crest">⚜️</div>
+      <h1 class="auth-title"><span class="gold-text-glow">ROYAL FLAME</span></h1>
+      <p class="auth-subtitle" id="auth-card-subtitle">Where Every Bite Becomes a Memory</p>
+    </div>
+
+    <!-- Tab Switcher -->
+    <div class="auth-tabs">
+      <button type="button" class="auth-tab-btn active" id="tab-signin">Sign In</button>
+      <button type="button" class="auth-tab-btn" id="tab-signup">Sign Up</button>
+    </div>
+
+    <!-- Section Title -->
+    <div style="text-align: center; margin-bottom: 1.5rem;">
+      <h2 id="auth-card-title" style="font-size: 1.35rem; font-weight: 700; letter-spacing: 0.08em; text-transform: uppercase;">
+        Sign <span class="gold-text">In</span>
+      </h2>
+    </div>
+
+    <!-- ==================== SIGN IN FORM ==================== -->
+    <form id="form-signin" class="auth-form active" novalidate>
+      <div class="form-group">
+        <label class="form-label" for="signin-email">Email ID</label>
+        <div class="input-wrapper">
+          <span class="input-icon">✉️</span>
+          <input 
+            type="email" 
+            id="signin-email" 
+            class="form-input" 
+            placeholder="e.g. yourname@domain.com"
+            required
+            autocomplete="email"
+          >
+        </div>
+      </div>
+
+      <div class="form-group">
+        <label class="form-label" for="signin-password">Password</label>
+        <div class="input-wrapper">
+          <span class="input-icon">🔒</span>
+          <input 
+            type="password" 
+            id="signin-password" 
+            class="form-input" 
+            placeholder="Enter your confidential password"
+            required
+            autocomplete="current-password"
+          >
+          <button type="button" class="toggle-password" title="Toggle password visibility">👁️‍🗨️</button>
+        </div>
+      </div>
+
+      <div class="form-extra">
+        <a href="#" class="forgot-link" id="forgot-password-link">Forgot Password?</a>
+        <a href="#" class="forgot-link" id="switch-to-signup">Create Account</a>
+      </div>
+
+      <button type="submit" class="btn btn-primary auth-submit-btn">
+        <span>Sign In to Experience</span> ➔
+      </button>
+    </form>
+
+    <!-- ==================== SIGN UP FORM ==================== -->
+    <form id="form-signup" class="auth-form" novalidate>
+      <div class="form-group">
+        <label class="form-label" for="signup-name">Full Name</label>
+        <div class="input-wrapper">
+          <span class="input-icon">👤</span>
+          <input 
+            type="text" 
+            id="signup-name" 
+            class="form-input" 
+            placeholder="e.g. Maharaja Vikramaditya"
+            required
+            autocomplete="name"
+          >
+        </div>
+      </div>
+
+      <div class="form-group">
+        <label class="form-label" for="signup-email">Email ID</label>
+        <div class="input-wrapper">
+          <span class="input-icon">✉️</span>
+          <input 
+            type="email" 
+            id="signup-email" 
+            class="form-input" 
+            placeholder="e.g. royal.guest@flame.com"
+            required
+            autocomplete="email"
+          >
+        </div>
+      </div>
+
+      <div class="form-group">
+        <label class="form-label" for="signup-phone">Phone Number</label>
+        <div class="input-wrapper">
+          <span class="input-icon">📞</span>
+          <input 
+            type="tel" 
+            id="signup-phone" 
+            class="form-input" 
+            placeholder="e.g. +91 98765 43210"
+            required
+            autocomplete="tel"
+          >
+        </div>
+      </div>
+
+      <div class="form-group">
+        <label class="form-label" for="signup-password">Password</label>
+        <div class="input-wrapper">
+          <span class="input-icon">🔒</span>
+          <input 
+            type="password" 
+            id="signup-password" 
+            class="form-input" 
+            placeholder="8 characters: A-Z, 0-9 & special character"
+            required
+            autocomplete="new-password"
+          >
+          <button type="button" class="toggle-password" title="Toggle password visibility">👁️‍🗨️</button>
+        </div>
+      </div>
+
+      <div class="form-group">
+        <label class="form-label" for="signup-confirm-password">Confirm Password</label>
+        <div class="input-wrapper">
+          <span class="input-icon">🛡️</span>
+          <input 
+            type="password" 
+            id="signup-confirm-password" 
+            class="form-input" 
+            placeholder="Re-enter password to confirm"
+            required
+            autocomplete="new-password"
+          >
+          <button type="button" class="toggle-password" title="Toggle password visibility">👁️‍🗨️</button>
+        </div>
+      </div>
+
+      
+
+      <button type="submit" class="btn btn-primary auth-submit-btn">
+        <span>Complete Registration</span> ➔
+      </button>
+    </form>
+
+    <!-- Quick Demo Accounts for Instant Testing -->
+    <div class="demo-accounts">
+      <div class="demo-title">Quick 1-Click Demo Accounts</div>
+      <div class="demo-buttons">
+        <button type="button" class="demo-btn" id="demo-customer-btn">👤 Demo Customer</button>
+        <button type="button" class="demo-btn" id="demo-admin-btn">👑 Executive Chef Admin</button>
+      </div>
+    </div>
+  </div>
+
+  <!-- JavaScript -->
+  <script src="js/auth.js"></script>
+</body>
+</html>

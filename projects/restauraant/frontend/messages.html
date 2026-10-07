@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Royal Notifications & Messages | Royal Flame Luxury Dining</title>
+  <meta name="description" content="Stay updated with real-time kitchen order progress, status transitions, and chef announcements.">
+  
+  <!-- Fonts & Icons -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;600;700;800&family=Outfit:wght@300;400;500;600;700&family=Playfair+Display:ital,wght@0,600;0,700;1,400&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+  
+  <!-- Stylesheets -->
+  <link rel="stylesheet" href="/css/style.css">
+  <link rel="stylesheet" href="/css/profile.css">
+</head>
+<body>
+
+  <!-- Luxury Navbar -->
+  <nav class="navbar" id="navbar">
+    <div class="nav-container">
+      <a href="/home.html" class="nav-brand">
+        <span class="brand-emblem">⚜️</span>
+        <div class="brand-titles">
+          <span class="brand-name">Royal Flame</span>
+          <span class="brand-tagline">Fine Dining & Banquets</span>
+        </div>
+      </a>
+
+      <div class="nav-links">
+        <a href="/home.html" class="nav-link"><i class="fas fa-home"></i> Home</a>
+        <a href="/menu.html" class="nav-link"><i class="fas fa-book-open"></i> Menu Book</a>
+        <a href="/orders.html" class="nav-link"><i class="fas fa-receipt"></i> My Orders</a>
+        <a href="/wishlist.html" class="nav-link"><i class="fas fa-heart"></i> Wishlist</a>
+        <a href="/cart.html" class="nav-link"><i class="fas fa-shopping-bag"></i> Cart</a>
+        <a href="/messages.html" class="nav-link active"><i class="fas fa-bell"></i> Alerts</a>
+        <a href="/profile.html" class="nav-link"><i class="fas fa-user"></i> Profile</a>
+      </div>
+
+      <div class="nav-actions">
+        <button class="btn-outline-gold" onclick="localStorage.clear(); window.location.href='/login.html';">
+          <i class="fas fa-sign-out-alt"></i> Logout
+        </button>
+      </div>
+    </div>
+  </nav>
+
+  <!-- Container -->
+  <div class="profile-container">
+    <div class="panel-card" style="margin-top: 20px;">
+      <div class="panel-card-header">
+        <h3><i class="fas fa-bell"></i> Royal Notifications & Dispatch Alerts</h3>
+        <button class="btn-admin-outline" onclick="markAllNotificationsRead()" style="font-size:0.8rem; padding:6px 14px;">
+          <i class="fas fa-check-double"></i> Mark All as Read
+        </button>
+      </div>
+
+      <div class="notifications-list" id="messagesContainer">
+        <div style="text-align:center; padding: 40px; color: var(--text-muted);">
+          <i class="fas fa-spinner fa-spin"></i> Retrieving notifications...
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <script src="/js/profile.js"></script>
+  <script>
+    document.addEventListener('DOMContentLoaded', () => {
+      initMessagesPage();
+    });
+  </script>
+</body>
+</html>
